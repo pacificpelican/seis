@@ -108,6 +108,7 @@ app.prepare().then(() => {
 
       let dbObject = Object.assign(serverObject, {locator: Math.floor(Math.random() * locatorScale + 1), created_at_time: Date.now()});
 
+      console.log("tuple to save")
       console.log(dbObject);
 
       _collection.insertOne(
@@ -162,13 +163,14 @@ app.prepare().then(() => {
 
       let dbObject = Object.assign(serverObject, {locator: Math.floor(Math.random() * locatorScale + 1), created_at_time: Date.now()});
 
+      console.log("tuple to save")
       console.log(dbObject);
 
       _collection.insertOne(
         dbObject
       );
 
-      console.log("saving to database: " + newData);
+      console.log("saving to database: " + dbObject);
       AccountsDB.saveDatabase();
 
       let homeLink = "<a href='../../..'>Home</a>";
