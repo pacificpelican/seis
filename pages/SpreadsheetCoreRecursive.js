@@ -35,6 +35,49 @@ class SpreadsheetCoreRecursive extends Component {
     this.setState({ modalIsOpen: false });
   }
 
+  requestSaveToDatabase(objectToSave) {
+
+    let filteredObject;
+    if (objectToSave[0] !== undefined) {
+      filteredObject = this.props.spreadsheetdata;
+      saveObjectToDatabase(filteredObject)
+
+    }
+    else {
+      console.error('cannot save this object; first tuple is undefined');
+      //  do nothing
+    }
+  }
+
+  saveObjectToDatabase(objectToSave, db = "seisdb") {
+    let dest = "/api/1/saveobject/db/" + db + "/obj/" + objectToSave;
+
+    fetch(dest, {method: 'post'})
+    .then(function(response) {
+      if (response.ok) {
+        console.log("response ok");
+        // console.log(response.json);
+        // for (var e in response.json) {
+        //   console.log(e.toString());
+        // }
+        // console.log(response.text);
+        return response.json();
+      }
+      else {
+        throw new Error(response.Error);
+      }
+      // throw new Error("Network did not respond.");
+      // return response.blob();
+   })
+    .then(function(myReturn) {
+      console.log(myReturn);
+      
+    //  that.setState({ pricesAndCaps: oldArr });
+    });
+
+
+  }
+
   render(props) {
 
     var g;

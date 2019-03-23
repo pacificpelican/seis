@@ -10,6 +10,8 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+let locatorScale = 100000;
+
 app.prepare().then(() => {
   const server = express()
 
@@ -62,6 +64,62 @@ app.prepare().then(() => {
    // return respArr;
     res.send(respArr);
   });
+
+  server.get('/api/1/saveobjectdata/db/:db/obj/:obj/newdata/:newdata', (req, res) => {
+    const AccountsDB = new loki(__dirname + "/db/" + req.params.db + ".json");
+
+    console.log(req.params);
+
+    const theParam = req.params.obj.toString();
+
+    let newData = req.params.newdata;
+
+    AccountsDB.loadDatabase({}, function () {
+      let _collection = AccountsDB.getCollection(theParam);
+
+      if (!_collection) {
+        console.log(
+          "Collection %s does not exist. Creating ... 🎮",
+          theParam
+        );
+        _collection = AccountsDB.addCollection(theParam);
+      }
+      else {
+        console.log("collection exists");
+      }
+
+      console.log("about to add tuple");
+
+      _collection.insertOne({
+        locator: Math.floor(Math.random() * locatorScale + 1),
+        created_at_time: Date.now(),
+        newData: newData
+      });
+
+      console.log("saving to database: " + newData);
+      AccountsDB.saveDatabase();
+
+      let homeLink = "<a href='../../..'>Home</a>";
+      res.send(
+          " record created    | " +
+          req.params
+      );
+
+      // retData = _collection.find();
+
+      // console.log(retData);
+
+      // apiDataDB = retData;
+    })
+
+    // let respObj = Object.assign({}, apiDataDB);
+
+    // let respArr = convertObj.toArray(respObj);
+
+   // return respArr;
+  //  res.send(respArr);
+  }); 
+  
 
   server.get('*', (req, res) => {
     return handle(req, res)
