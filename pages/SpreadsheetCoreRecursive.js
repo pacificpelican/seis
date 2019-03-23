@@ -35,60 +35,6 @@ class SpreadsheetCoreRecursive extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  requestSaveToDatabase = (props) => {
-    let objectToSaveTo;
-    if ((typeof this.props.saveObject !== 'undefined') && ((this.props.saveObject !== null))) {
-      objectToSaveTo = this.props.saveObject;
-    }
-    else {
-      objectToSaveTo = "dataset"
-    }
-
-    console.log('objectToSaveTo');
-    console.log(objectToSaveTo);
-
-    let filteredObject;
-   // if (typeof objectToSaveTo[0] !== 'undefined') {
-      filteredObject = this.props.spreadsheetdata;
-      this.saveObjectToDatabase(objectToSaveTo, filteredObject);
-    // }
-    // else {
-    //   console.error('cannot save this object; first tuple is undefined');
-    //   //  do nothing
-   // }
-  }
-
-  saveObjectToDatabase = (objectTo, newdata = "{data: 'none'}", db = "seisdb") => {
-    let dest = "/api/1/saveobjectdata/db/" + db + "/obj/" + objectTo + "/newdata/" + newdata;
-    // /api/1/saveobjectdata/db/:db/obj/:obj/newdata/:newdata
-
-    console.log("fetch save request: " + dest);
-    fetch(dest, {method: 'post'})
-    .then(function(response) {
-      if (response.ok) {
-        console.log("response ok");
-        // console.log(response.json);
-        // for (var e in response.json) {
-        //   console.log(e.toString());
-        // }
-        // console.log(response.text);
-        return response.json();
-      }
-      else {
-        throw new Error(response.Error);
-      }
-      // throw new Error("Network did not respond.");
-      // return response.blob();
-   })
-    .then(function(myReturn) {
-      console.log(myReturn);
-      
-    //  that.setState({ pricesAndCaps: oldArr });
-    });
-
-
-  }
-
   render(props) {
 
     var g;
@@ -182,11 +128,6 @@ class SpreadsheetCoreRecursive extends Component {
             return [...retSet];
           })}
         </section>
-        <aside>
-          <button id="btn-save" onClick={this.requestSaveToDatabase}>
-            Save to DB
-          </button>
-        </aside>
         <style>{`
           .spread {
             font-family: "Ubuntu Mono", "Inconsolata", "Hack", "Fira Code", Menlo, monospace;

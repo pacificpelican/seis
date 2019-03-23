@@ -235,7 +235,7 @@ class Desk extends Component {
           </span>
         </h1>
         <aside>
-          database tables to look up: dataset
+          database tables to look up: dataset, default
           <br />
           
         <br />
