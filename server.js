@@ -90,11 +90,17 @@ app.prepare().then(() => {
 
       console.log("about to add tuple");
 
-      _collection.insertOne({
-        locator: Math.floor(Math.random() * locatorScale + 1),
-        created_at_time: Date.now(),
-        newData: newData
-      });
+      let serverObject = JSON.parse(newData);
+
+      console.log(serverObject);
+
+      let dbObject = Object.assign(serverObject, {locator: Math.floor(Math.random() * locatorScale + 1), created_at_time: Date.now()});
+
+      console.log(dbObject);
+
+      _collection.insertOne(
+        dbObject
+      );
 
       console.log("saving to database: " + newData);
       AccountsDB.saveDatabase();
@@ -105,19 +111,62 @@ app.prepare().then(() => {
           req.params
       );
 
-      // retData = _collection.find();
-
-      // console.log(retData);
-
-      // apiDataDB = retData;
     })
 
-    // let respObj = Object.assign({}, apiDataDB);
+  }); 
 
-    // let respArr = convertObj.toArray(respObj);
+  server.post('/api/1/saveobjectdata/db/:db/obj/:obj/newdata/:newdata', (req, res) => {
+    const AccountsDB = new loki(__dirname + "/db/" + req.params.db + ".json");
 
-   // return respArr;
-  //  res.send(respArr);
+    console.log(req.params);
+
+    const theParam = req.params.obj.toString();
+
+    let newData = req.params.newdata;
+
+    AccountsDB.loadDatabase({}, function () {
+      let _collection = AccountsDB.getCollection(theParam);
+
+      if (!_collection) {
+        console.log(
+          "Collection %s does not exist. Creating ... 🎮",
+          theParam
+        );
+        _collection = AccountsDB.addCollection(theParam);
+      }
+      else {
+        console.log("collection exists");
+      }
+
+      console.log("about to add tuple");
+
+      console.log(newData);
+
+    //  let serverObject = JSON.parse(newData);
+
+      let serverObject = newData;
+
+      console.log(serverObject);
+
+      let dbObject = Object.assign(serverObject, {locator: Math.floor(Math.random() * locatorScale + 1), created_at_time: Date.now()});
+
+      console.log(dbObject);
+
+      _collection.insertOne(
+        dbObject
+      );
+
+      console.log("saving to database: " + newData);
+      AccountsDB.saveDatabase();
+
+      let homeLink = "<a href='../../..'>Home</a>";
+      res.send(
+          " record created    | " +
+          req.params
+      );
+
+    })
+
   }); 
   
 

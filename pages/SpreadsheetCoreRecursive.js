@@ -35,23 +35,34 @@ class SpreadsheetCoreRecursive extends Component {
     this.setState({ modalIsOpen: false });
   }
 
-  requestSaveToDatabase(objectToSave) {
-
-    let filteredObject;
-    if (objectToSave[0] !== undefined) {
-      filteredObject = this.props.spreadsheetdata;
-      saveObjectToDatabase(filteredObject)
-
+  requestSaveToDatabase = (props) => {
+    let objectToSaveTo;
+    if ((typeof this.props.saveObject !== 'undefined') && ((this.props.saveObject !== null))) {
+      objectToSaveTo = this.props.saveObject;
     }
     else {
-      console.error('cannot save this object; first tuple is undefined');
-      //  do nothing
+      objectToSaveTo = "dataset"
     }
+
+    console.log('objectToSaveTo');
+    console.log(objectToSaveTo);
+
+    let filteredObject;
+   // if (typeof objectToSaveTo[0] !== 'undefined') {
+      filteredObject = this.props.spreadsheetdata;
+      this.saveObjectToDatabase(objectToSaveTo, filteredObject);
+    // }
+    // else {
+    //   console.error('cannot save this object; first tuple is undefined');
+    //   //  do nothing
+   // }
   }
 
-  saveObjectToDatabase(objectToSave, db = "seisdb") {
-    let dest = "/api/1/saveobject/db/" + db + "/obj/" + objectToSave;
+  saveObjectToDatabase = (objectTo, newdata = "{data: 'none'}", db = "seisdb") => {
+    let dest = "/api/1/saveobjectdata/db/" + db + "/obj/" + objectTo + "/newdata/" + newdata;
+    // /api/1/saveobjectdata/db/:db/obj/:obj/newdata/:newdata
 
+    console.log("fetch save request: " + dest);
     fetch(dest, {method: 'post'})
     .then(function(response) {
       if (response.ok) {
@@ -171,6 +182,11 @@ class SpreadsheetCoreRecursive extends Component {
             return [...retSet];
           })}
         </section>
+        <aside>
+          <button id="btn-save" onClick={this.requestSaveToDatabase}>
+            Save to DB
+          </button>
+        </aside>
         <style>{`
           .spread {
             font-family: "Ubuntu Mono", "Inconsolata", "Hack", "Fira Code", Menlo, monospace;
