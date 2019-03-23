@@ -113,9 +113,9 @@ class Desk extends Component {
     return retVal;
   }
 
-  runDBlookup(dbOBJ) {
+  runDBlookup(dbOBJ, db='seisdb') {
     let that = this;
-    let dest = "/api/1/getdbdata/object/" + dbOBJ;
+    let dest = "/api/1/getdbdata/db/" + db + "/object/" + dbOBJ;
     console.log("FETCH REQUEST URL:")
     console.log(dest);
     fetch(dest, {})

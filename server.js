@@ -26,9 +26,9 @@ app.prepare().then(() => {
   })
 
   var apiDataDB = {}
-  server.get('/api/1/getdbdata/object/:obj', (req, res) => {
+  server.get('/api/1/getdbdata/db/:db/object/:obj', (req, res) => {
 
-    const AccountsDB = new loki(__dirname + "/db/accountsdb.json");
+    const AccountsDB = new loki(__dirname + "/db/" + req.params.db + ".json");
 
     console.log(req.params);
 
