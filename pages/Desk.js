@@ -113,13 +113,13 @@ class Desk extends Component {
     return retVal;
   }
 
-  runDBlookup(dbOBJ, db='seisdb') {
+  runDBlookup(dbOBJ, db = 'seisdb') {
     let that = this;
     let dest = "/api/1/getdbdata/db/" + db + "/object/" + dbOBJ;
     console.log("FETCH REQUEST URL:")
     console.log(dest);
     fetch(dest, {})
-      .then(function(response) {
+      .then(function (response) {
         if (response.ok) {
           for (var e in response.json) {
             console.log(e);
@@ -130,7 +130,7 @@ class Desk extends Component {
         throw new Error("Network did not respond.");
         return response.blob();
       })
-      .then(function(myReturn) {
+      .then(function (myReturn) {
         //      console.log(myReturn);
         that.setState({ dbdata: myReturn, dbdataArr: myReturn });
       });
@@ -180,8 +180,6 @@ class Desk extends Component {
     let retArr = [];
 
     for (let o of objArr) {
-      //    console.log(o);
-
       let innerSet = new Set(Object.keys(o));
       let innerLibrary = new Set([...this.keyLibrary]);
 
@@ -237,8 +235,8 @@ class Desk extends Component {
         <aside>
           database tables to look up: dataset, default, seis
           <br />
-          
-        <br />
+
+          <br />
         </aside>
         <section id="user-input">
           <Input
@@ -257,7 +255,7 @@ class Desk extends Component {
         <footer id="deskFooter">
           powered by <b>mlBench Spreadsheetcore</b> by <a href="http://danmckeown.info">Dan McKeown</a>
         </footer>
-        
+
         <style jsx global>{`
           h1#desk, aside {
             font-family: Futura, "Ubuntu", "Lucida Grande", "Roboto", Helvetica,

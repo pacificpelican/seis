@@ -30,24 +30,7 @@ class Edit extends Component {
     super();
 
     this.handlecValueChange = this.handlecValueChange.bind(this);
-  //  this.handleLookupButton = this.handleLookupButton.bind(this);
-
   }
-
-  // static async getInitialProps({ req }) {
-    
-  //   console.log(req);
-  //   const tuple = req ? req.headers['tuple'] : navigator.tuple;
-  //   console.log("props: " + tuple);
-  //   return { tuple }
-  // }
-
-  // toggleWildMode = () => {
-  //   console.log("toggling wild mode");
-  //   let currentWild = this.state.wildMode;
-  //   this.setState({wildMode: !currentWild});
-  // }
-
 
   handlecValueChange = (event) => {
     console.log(event.target.value)
@@ -65,48 +48,26 @@ class Edit extends Component {
     let apiUrlPrefix = '';
     let dest;
     
-    // if (this.state.wildMode !== true) {
-    //   dest = apiUrlPrefix + '/api/1/updatedata/db/' + store + '/object/' + obj + '/objprop/' + objprop + '/objkey/' + objkey + '/newval/' + newval;
-    // }
-    // else {
-      dest = apiUrlPrefix + '/api/1/updatedata/db/' + store + '/object/' + obj + '/objprop/' + objprop + '/objkey/' + objkey + '/newval/' + newval + '/tuple/' + tuple;
-    // }
+    dest = apiUrlPrefix + '/api/1/updatedata/db/' + store + '/object/' + obj + '/objprop/' + objprop + '/objkey/' + objkey + '/newval/' + newval + '/tuple/' + tuple;
 
     console.log("dest: " + dest);
-    //  /api/1/updatedata/db/:db/object/:obj/tuple/:tuple/objprop/:objprop/objkey/:objkey/newval/:newval
 
-      fetch(dest, {method: 'post'})
-        .then(function(response) {
-          if (response.ok) {
-            console.log("response ok");
-            // console.log(response.json);
-            // for (var e in response.json) {
-            //   console.log(e.toString());
-            // }
-            // console.log(response.text);
-            return response.json();
-          }
-          else {
-            throw new Error(response.Error);
-          }
-          // throw new Error("Network did not respond.");
-          // return response.blob();
-      })
-        .then(function(myReturn) {
-          console.log(myReturn);
-          
-        //  that.setState({ pricesAndCaps: oldArr });
-      });
+    fetch(dest, {method: 'post'})
+      .then(function(response) {
+        if (response.ok) {
+          console.log("response ok");
+          return response.json();
+        }
+        else {
+          throw new Error(response.Error);
+        }
+    })
+      .then(function(myReturn) {
+        console.log(myReturn);
+    });
   }
 
   componentDidMount(props) {
-    //this.setState({ entry: this.props.val})
-
-    // let url_string = Window.location.href;
-    // let url = new URL(url_string);
-    // var val = url.searchParams.get("val");
-    // console.log(val);
-
     this.setState({userObjectAsk : this.props.url.query.val});
   }
 
@@ -115,11 +76,6 @@ class Edit extends Component {
   }
 
   render(props) {
-
-    // console.log(this.props);
-    // console.log(this.props.url.query.tuple);
-    // console.log(this.props.url.query.val);
-
     const tuple = this.props.url.query.tuple;
     let val = this.props.url.query.val;
     let store = this.props.url.query.store;
@@ -150,9 +106,6 @@ class Edit extends Component {
             update in DB
           </Button>
         </section>
-        {/* <aside id="wildmode">
-          <span id="wild" onClick={this.toggleWildMode}>Current Wild Mode Setting: {this.state.wildMode.toString()}</span>
-        </aside> */}
         <Card>
           <section id="propsInfo">
             <span>val: {val}
@@ -166,9 +119,6 @@ class Edit extends Component {
             prop: {prop}</span>
           </section>
         </Card>
-        {/* <Card id="results">
-          <Spreadsheet dbdataArr={this.state.dbdataArr} />
-        </Card> */}
 
         <footer id="deskFooter">
           powered by <b>mlBench Spreadsheetcore</b> by <a href="http://danmckeown.info">Dan McKeown</a>

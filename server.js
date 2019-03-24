@@ -32,7 +32,7 @@ function postDataWildcard(db, table, tuple, objval, objkey = "description", newV
         "Collection %s does not exist. Aborting attempt to edit ",
         table
       );
-    
+
       throw new Error('ERROR: collection does not exist');
     }
     else {
@@ -53,11 +53,11 @@ function postDataWildcard(db, table, tuple, objval, objkey = "description", newV
     record = _collection.findObject({ locator: { '$aeq': tuple }, [objkeyString]: { '$contains': objvalString } });
 
     if (record === null) {
-    record = _collection.findObject({ locator: { '$aeq': tuple } });
+      record = _collection.findObject({ locator: { '$aeq': tuple } });
     }
 
     console.log(record);
-    
+
     if (record === null) {
       record = _collection.findObject({ [objkeyString]: { '$contains': objvalString } });
     }
@@ -112,7 +112,6 @@ function postDataWildcard2(db, table, tuple, objval, objkey = "description", new
 
     db2.saveDatabase();
   });
-
 }
 
 app.prepare().then(() => {
@@ -120,16 +119,16 @@ app.prepare().then(() => {
 
   server.get('/a', (req, res) => {
     return app.render(req, res, '/a', req.query)
-  })
+  });
 
   server.get('/b', (req, res) => {
     return app.render(req, res, '/b', req.query)
-  })
+  });
 
   server.get('/posts/:id', (req, res) => {
 
     return app.render(req, res, '/posts', { id: req.params.id })
-  })
+  });
 
   var apiDataDB = {}
   server.get('/api/1/getdbdata/db/:db/object/:obj', (req, res) => {
@@ -162,7 +161,6 @@ app.prepare().then(() => {
       res.send(respArr);
     })
   });
-
 
   server.post('/api/1/saveobjectdata/db/:db/obj/:obj/newdata/:newdata', (req, res) => {
     const AccountsDB = new loki(__dirname + "/db/" + req.params.db + ".json");
@@ -204,7 +202,7 @@ app.prepare().then(() => {
 
       let homeLink = "<a href='../../..'>Home</a>";
       res.send(
-        Object.assign({}, {result: 'record created'})
+        Object.assign({}, { result: 'record created' })
       );
     })
   });
@@ -269,7 +267,7 @@ app.prepare().then(() => {
 
     console.log("running update POST route");
     console.log("obj: " + req.params.obj)
-    //              db, table, tuple, objval, objkey = "description", newVal
+
     postDataWildcard(req.params.db, req.params.obj, req.params.tuple, req.params.objprop, req.params.objkey, req.params.newval);
 
     res.send(Object.assign({}, { Response: 'ok - POST update' }));
