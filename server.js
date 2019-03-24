@@ -32,8 +32,7 @@ function postDataWildcard(db, table, tuple, objval, objkey = "description", newV
         "Collection %s does not exist. Aborting attempt to edit ",
         table
       );
-      // _collection = db2.addCollection(table);
-      // EXIT
+    
       throw new Error('ERROR: collection does not exist');
     }
     else {
@@ -157,11 +156,11 @@ app.prepare().then(() => {
       console.log(retData);
       console.log(newData);
       apiDataDB = retData;
-    })
 
-    let respObj = Object.assign({}, apiDataDB);
-    let respArr = convertObj.toArray(respObj);
-    res.send(respArr);
+      let respObj = Object.assign({}, apiDataDB);
+      let respArr = convertObj.toArray(respObj);
+      res.send(respArr);
+    })
   });
 
 
@@ -259,48 +258,22 @@ app.prepare().then(() => {
   server.get("/api/1/updatedata/db/:db/object/:obj/objprop/:objprop/objkey/:objkey/newval/:newval", (req, res) => {
 
     console.log("running update GET route");
-    //  console.log(req.params);
-
     console.log("obj: " + req.params.obj)
-    //              db, table, tuple, objval, objkey = "description", newVal
+
     postDataWildcard(req.params.db, req.params.obj, req.params.tuple, req.params.objprop, req.params.objkey, req.params.newval);
 
-    //  ctx.response.body = Object.assign({}, { Response: 'ok' });
     res.send(Object.assign({}, { Response: 'ok - GET update' }));
   });
 
   server.post("/api/1/updatedata/db/:db/object/:obj/objprop/:objprop/objkey/:objkey/newval/:newval/tuple/:tuple", (req, res) => {
 
     console.log("running update POST route");
-    //  console.log(req.params);
-
     console.log("obj: " + req.params.obj)
     //              db, table, tuple, objval, objkey = "description", newVal
     postDataWildcard(req.params.db, req.params.obj, req.params.tuple, req.params.objprop, req.params.objkey, req.params.newval);
 
-    //  ctx.response.body = Object.assign({}, { Response: 'ok' });
     res.send(Object.assign({}, { Response: 'ok - POST update' }));
   });
-
-  // server.get("/api/1/updatedata/db/:db/object/:obj/tuple/:tuple/objprop/:objprop/objkey/:objkey/newval/:newval", (req, res) => {
-
-  //   console.log(req.params);
-
-  //   postDataWildcard2(req.params.db, req.params.obj, req.params.tuple, req.params.objprop, req.params.objkey, req.params.newval);
-
-  //   //  ctx.response.body = Object.assign({}, { Response: 'ok' });
-  //   res.send(Object.assign({}, { Response: 'ok' }));
-  // });
-
-  // server.post("/api/1/updatedata/db/:db/object/:obj/tuple/:tuple/objprop/:objprop/objkey/:objkey/newval/:newval", (req, res) => {
-
-  //   console.log(req.params);
-
-  //   postDataWildcard2(req.params.db, req.params.obj, req.params.tuple, req.params.objprop, req.params.objkey, req.params.newval);
-
-  //   //  ctx.response.body = Object.assign({}, { Response: 'ok' });
-  //   res.send(Object.assign({}, { Response: 'ok' }));
-  // });
 
   server.get('*', (req, res) => {
     return handle(req, res)
