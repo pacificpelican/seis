@@ -235,7 +235,7 @@ class Desk extends Component {
           </span>
         </h1>
         <aside>
-          database tables to look up: dataset, default
+          database tables to look up: dataset, default, seis
           <br />
           
         <br />
@@ -251,7 +251,7 @@ class Desk extends Component {
           </Button>
         </section>
         <Card id="results">
-          <Spreadsheet dbdataArr={this.state.dbdataArr} table={this.state.userObjectAsk} store="accountsdb" />
+          <Spreadsheet dbdataArr={this.state.dbdataArr} table={this.state.userObjectAsk} store="seisdb" />
         </Card>
 
         <footer id="deskFooter">

@@ -23,7 +23,7 @@ class Edit extends Component {
     entry: '',
     cryptonowNumber: 0,
     userObjectAsk: '_',
-    wildMode: false
+    wildMode: true
   };
 
   constructor(props) {
@@ -42,11 +42,11 @@ class Edit extends Component {
   //   return { tuple }
   // }
 
-  toggleWildMode = () => {
-    console.log("toggling wild mode");
-    let currentWild = this.state.wildMode;
-    this.setState({wildMode: !currentWild});
-  }
+  // toggleWildMode = () => {
+  //   console.log("toggling wild mode");
+  //   let currentWild = this.state.wildMode;
+  //   this.setState({wildMode: !currentWild});
+  // }
 
 
   handlecValueChange = (event) => {
@@ -60,19 +60,17 @@ class Edit extends Component {
     let cont = this.letServerUpdate(this.props.url.query.store, this.props.url.query.table, this.props.url.query.tuple, this.props.url.query.val, this.props.url.query.objprop, this.state.userObjectAsk);
   }
 
-//  /api/1/updatedata/db/accountsDB/obj/0/tuple/client/objprop/Paul Cook/objkey/Donald Duck/newval/undefined
-
   letServerUpdate(store, obj, tuple, objprop, objkey, newval) {
     console.log("running letServerUpdate");
     let apiUrlPrefix = '';
     let dest;
     
-    if (this.state.wildMode !== true) {
-      dest = apiUrlPrefix + '/api/1/updatedata/db/' + store + '/object/' + obj + '/objprop/' + objprop + '/objkey/' + objkey + '/newval/' + newval;
-    }
-    else {
-      dest = apiUrlPrefix + '/api/1/updatedata/db/' + store + '/object/' + obj + '/tuple/' + tuple + '/objprop/' + objprop + '/objkey/' + objkey + '/newval/' + newval;
-    }
+    // if (this.state.wildMode !== true) {
+    //   dest = apiUrlPrefix + '/api/1/updatedata/db/' + store + '/object/' + obj + '/objprop/' + objprop + '/objkey/' + objkey + '/newval/' + newval;
+    // }
+    // else {
+      dest = apiUrlPrefix + '/api/1/updatedata/db/' + store + '/object/' + obj + '/objprop/' + objprop + '/objkey/' + objkey + '/newval/' + newval + '/tuple/' + tuple;
+    // }
 
     console.log("dest: " + dest);
     //  /api/1/updatedata/db/:db/object/:obj/tuple/:tuple/objprop/:objprop/objkey/:objkey/newval/:newval
@@ -152,9 +150,9 @@ class Edit extends Component {
             update in DB
           </Button>
         </section>
-        <aside id="wildmode">
+        {/* <aside id="wildmode">
           <span id="wild" onClick={this.toggleWildMode}>Current Wild Mode Setting: {this.state.wildMode.toString()}</span>
-        </aside>
+        </aside> */}
         <Card>
           <section id="propsInfo">
             <span>val: {val}

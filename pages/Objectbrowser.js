@@ -110,7 +110,7 @@ class Objectbrowser extends Component {
       objectToSaveTo = this.props.saveObject;
     }
     else {
-      objectToSaveTo = "default";
+      objectToSaveTo = "seis";
     }
 
     console.log('objectToSaveTo');
@@ -128,7 +128,7 @@ class Objectbrowser extends Component {
    // }
   }
 
-  saveObjectToDatabase = (objectTo = "default", newdata = "{data: 'none'}", db = "seisdb") => {
+  saveObjectToDatabase = (objectTo = "seis", newdata = "{data: 'none'}", db = "seisdb") => {
     console.log("new data to be written");
     console.log(newdata);
 

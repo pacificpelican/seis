@@ -40,7 +40,7 @@ class SpreadsheetCoreRecursiveClick extends Component {
 
   render(props) {
 
-    let theStore = 'accountsdb';
+    let theStore = 'seisdb';   //  This is a magic database name that could be absracted per the API
     let theTable = this.props.table;
 
     var g;
