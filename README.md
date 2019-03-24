@@ -1,3 +1,17 @@
+**seis**
+
+*an object cycle manager by [Dan McKeown](http://danmckeown.info)*
+*copyright 2019*
+
+- You can view objects by entering them in into the input at <a href="/Objectbrowser>/Objectbrowser</a>
+- After visualizing the object with the `enter your JSON` button you can persist the data by pressing the `save to DB` button
+- These saved objects can be viewed at Desk (search for seis for the saved data in chronological order);
+
+===
+===
+Project Scaffolded with Now:
+===
+
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/custom-server-express)
 
 # Custom Express Server example
