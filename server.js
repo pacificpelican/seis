@@ -56,7 +56,7 @@ function postDataWildcard(db, table, tuple, objval, objkey = "description", newV
       record = _collection.findObject({ locator: { '$aeq': tuple } });
     }
 
-    console.log(record);
+  //  console.log(record);
 
     if (record === null) {
       record = _collection.findObject({ [objkeyString]: { '$contains': objvalString } });
@@ -65,8 +65,35 @@ function postDataWildcard(db, table, tuple, objval, objkey = "description", newV
     console.log(record);
     console.log(newVal);
 
-    record[`${objkeyString}`] = newVal;
+    if ((typeof record[`${objkeyString}`] !== 'undefined') && (record[`${objkeyString}`] !== null)) {
+      console.log("0 levels deep in object; key: " + objkeyString);
+      record[`${objkeyString}`] = newVal;
+    }
+    else {
+      console.log("going 1 level deep in object");
+      console.log(record);
+      // record.map(
+      //   x =>
+      // [record].map(function (x) {
+      //   {
+      //     console(x);
+      //     // console.log("1 level deep in object; key: " + x);
+      //     // if (typeof record[`${x}`][`${objkeyString}`] !== 'undefined') {
+      //     //   record[`${x}`][`${objkeyString}`] = newVal;
+      //     // }
+      //   }
+      // });
+      Object.keys(record).forEach(function (item) {
+        console.log(item); // key
+        console.log(record[item]); // value
 
+        if ((typeof record[item][`${objkeyString}`] !== 'undefined') && (record[item][`${objkeyString}`] !== null)) {
+          console.log("1 levels deep in object; key: " + objkeyString);
+          record[item][`${objkeyString}`] = newVal;
+        }
+      });
+    }
+    
     _collection.update(record);
 
     db2.saveDatabase();
