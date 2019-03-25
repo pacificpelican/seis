@@ -94,7 +94,21 @@ function postDataWildcard(db, table, tuple, objval, objkey = "description", newV
               record[item][item2][`${objkeyString}`] = newVal;
             }
             else {
-              console.log("object may require greater than 2 depth");
+              console.log("going 3 levels deep in object");
+              console.log(record[item][item2]);
+
+              Object.keys(record[item][item2]).forEach(function (item3) {
+                console.log(item3); // key
+                console.log(record[item][item2][item3]); // value
+
+                if ((typeof record[item][item2][item3][`${objkeyString}`] !== 'undefined') && (record[item][item2][item3][`${objkeyString}`] !== null)) {
+                  console.log("3 levels deep in object;" + record[item][item2][item3][`${objkeyString}`]);
+                  record[item][item2][item3][`${objkeyString}`] = newVal;
+                }
+                else {
+                  console.log("object may require greater than 3 depth");
+                }
+              });
             }
           });
         }

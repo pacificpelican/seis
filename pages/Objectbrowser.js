@@ -117,59 +117,37 @@ class Objectbrowser extends Component {
     console.log(objectToSaveTo);
 
     let filteredObject;
-   // if (typeof objectToSaveTo[0] !== 'undefined') {
-      filteredObject = this.state.dbdataArr;
-      console.log(filteredObject.toString());
-      this.saveObjectToDatabase(objectToSaveTo, filteredObject);
-    // }
-    // else {
-    //   console.error('cannot save this object; first tuple is undefined');
-    //   //  do nothing
-   // }
+   
+    filteredObject = this.state.dbdataArr;
+    console.log(filteredObject.toString());
+    this.saveObjectToDatabase(objectToSaveTo, filteredObject);
   }
 
   saveObjectToDatabase = (objectTo = "seis", newdata = "{data: 'none'}", db = "seisdb") => {
     console.log("new data to be written");
     console.log(newdata);
 
-  //  let newdataString = JSON.stringify(newdata);
-
     let newdataString = encodeURIComponent(JSON.stringify(newdata));
 
     console.log(newdataString);
 
-    // newdataString = newdataString.substring(1, newdataString.length-1);
-
-    // newdataString = newdataString.replace(/\s/g, '');
-
     let dest = "/api/1/saveobjectdata/db/" + db + "/obj/" + objectTo + "/newdata/" + newdataString.toString();
-    // /api/1/saveobjectdata/db/:db/obj/:obj/newdata/:newdata
 
     console.log("fetch save request: " + dest);
     fetch(dest, {method: 'post'})
     .then(function(response) {
       if (response.ok) {
         console.log("response ok");
-        // console.log(response.json);
-        // for (var e in response.json) {
-        //   console.log(e.toString());
-        // }
-        // console.log(response.text);
+        
         return response.json();
       }
       else {
         throw new Error(response.Error);
       }
-      // throw new Error("Network did not respond.");
-      // return response.blob();
-   })
+    })
     .then(function(myReturn) {
       console.log(myReturn);
-      
-    //  that.setState({ pricesAndCaps: oldArr });
     });
-
-
   }
 
   handlecValueChange(event) {
