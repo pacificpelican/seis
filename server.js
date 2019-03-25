@@ -56,7 +56,7 @@ function postDataWildcard(db, table, tuple, objval, objkey = "description", newV
       record = _collection.findObject({ locator: { '$aeq': tuple } });
     }
 
-  //  console.log(record);
+    //  console.log(record);
 
     if (record === null) {
       record = _collection.findObject({ [objkeyString]: { '$contains': objvalString } });
@@ -72,28 +72,35 @@ function postDataWildcard(db, table, tuple, objval, objkey = "description", newV
     else {
       console.log("going 1 level deep in object");
       console.log(record);
-      // record.map(
-      //   x =>
-      // [record].map(function (x) {
-      //   {
-      //     console(x);
-      //     // console.log("1 level deep in object; key: " + x);
-      //     // if (typeof record[`${x}`][`${objkeyString}`] !== 'undefined') {
-      //     //   record[`${x}`][`${objkeyString}`] = newVal;
-      //     // }
-      //   }
-      // });
+
       Object.keys(record).forEach(function (item) {
         console.log(item); // key
         console.log(record[item]); // value
 
         if ((typeof record[item][`${objkeyString}`] !== 'undefined') && (record[item][`${objkeyString}`] !== null)) {
-          console.log("1 levels deep in object; key: " + objkeyString);
+          console.log("1 levels deep in object; " + record[item][`${objkeyString}`]);
           record[item][`${objkeyString}`] = newVal;
+        }
+        else {
+          console.log("going 2 levels deep in object");
+          console.log(record[item]);
+
+          Object.keys(record[item]).forEach(function (item2) {
+            console.log(item2); // key
+            console.log(record[item][item2]); // value
+
+            if ((typeof record[item][item2][`${objkeyString}`] !== 'undefined') && (record[item][item2][`${objkeyString}`] !== null)) {
+              console.log("2 levels deep in object;" + record[item][item2][`${objkeyString}`]);
+              record[item][item2][`${objkeyString}`] = newVal;
+            }
+            else {
+              console.log("object may require greater than 2 depth");
+            }
+          });
         }
       });
     }
-    
+
     _collection.update(record);
 
     db2.saveDatabase();
