@@ -1,6 +1,6 @@
-//  danmckeown.info copyright 2017-2018
+//  seis SpreadsheetCore copyright 2017-2018
 //  SpreadsheetCore.js
-//  mlBench
+//  via mlBench & danmckeown.info
 import React, { Component } from "react";
 
 let lastkey = null;
@@ -56,7 +56,7 @@ class SpreadsheetCoreRecursive extends Component {
 
             for (let i = 0; i < valArr.length; i++) {
               if (typeof valArr[i] === "object") {
-                //         console.log("valArr[i] is an object");
+                //         do nothing
               } else {
                 retSet.push(
                   <span key={valArr[i]} className="valHeaderRow">
@@ -93,7 +93,6 @@ class SpreadsheetCoreRecursive extends Component {
               }
             }
 
-            
             for (let i = 0; i < valArr.length; i++) {
               if (typeof valArr[i] === "object") {
                 retSet.push(

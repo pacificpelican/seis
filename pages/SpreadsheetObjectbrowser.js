@@ -1,6 +1,6 @@
-//  danmckeown.info copyright 2017-2018
+//  seis SpreadsheetObjectbrowser copyright 2017-2019
 //  SpreadsheetObjectbrowser.js
-//  mlBench
+//  via mlBench & danmckeown.info
 import React, { Component } from "react";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
-//  danmckeown.info copyright 2017-2018
-//  Desk.js
-//  mlBench
+//  seis Edit copyright 2017-2019
+//  Edit.js
+//  via mlBench & danmckeown.info
 import React, { Component } from "react";
 import Link from "next/link";
 

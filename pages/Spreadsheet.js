@@ -1,6 +1,6 @@
-//  danmckeown.info copyright 2017-2018
+//  seis Spreadsheet copyright 2017-2019
 //  Spreadsheet.js
-//  mlBench
+//  via mlBench & danmckeown.info
 import React, { Component } from "react";
 
 import SpreadsheetCoreRecursiveClick from "./SpreadsheetCoreRecursiveClick";

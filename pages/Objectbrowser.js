@@ -1,6 +1,6 @@
-//  apple-picker Objectbrowser copyright 2017-2019
+//  seis Objectbrowser copyright 2017-2019
 //  Objectbrowser.js
-//  via mlBench and danmckeown.info #5
+//  via apple-picker, mlBench, and danmckeown.info #5
 import React, { Component } from "react";
 
 import SpreadsheetObjectbrowser from "./SpreadsheetObjectbrowser";

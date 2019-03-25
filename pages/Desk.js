@@ -1,6 +1,6 @@
-//  danmckeown.info copyright 2017-2018
+//  seis Desk copyright 2017-2019
 //  Desk.js
-//  mlBench
+//  via mlBench & danmckeown.info
 import React, { Component } from "react";
 
 import Spreadsheet from "./Spreadsheet";
@@ -131,7 +131,6 @@ class Desk extends Component {
         return response.blob();
       })
       .then(function (myReturn) {
-        //      console.log(myReturn);
         that.setState({ dbdata: myReturn, dbdataArr: myReturn });
       });
   }

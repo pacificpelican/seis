@@ -1,6 +1,6 @@
 {
   "name": "seis",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "scripts": {
     "dev": "node server.js",
     "build": "next build",

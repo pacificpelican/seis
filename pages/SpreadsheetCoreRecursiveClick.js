@@ -1,6 +1,6 @@
-//  danmckeown.info copyright 2017-2018
+//  seis SpreadsheetCore copyright 2017-2018
 //  SpreadsheetCore.js
-//  mlBench
+//  mlBench & danmckeown.info
 import React, { Component } from "react";
 import Link from 'next/link';
 
@@ -11,36 +11,11 @@ class SpreadsheetCoreRecursiveClick extends Component {
 
   constructor() {
     super();
-
-    this.state = {
-      modalIsOpen: false
-    };
-
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-  }
-
-  openModal() {
-    this.setState({ modalIsOpen: true });
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // this.subtitle.style.color = '#f00';
-    let bg = document.getElementById("basicComponentDiv");
-    bg.style.visibility = "hidden";
-  }
-
-  closeModal() {
-    let bg = document.getElementById("basicComponentDiv");
-    bg.style.visibility = "visible";
-    this.setState({ modalIsOpen: false });
   }
 
   render(props) {
 
-    let theStore = 'seisdb';   //  This is a magic database name that could be absracted per the API
+    let theStore = 'seisdb';   //  This is a magic database name that could be abstracted per the API
     let theTable = this.props.table;
 
     var g;
@@ -62,7 +37,7 @@ class SpreadsheetCoreRecursiveClick extends Component {
 
             for (let i = 0; i < valArr.length; i++) {
               if (typeof valArr[i] === "object") {
-                //         console.log("valArr[i] is an object");
+                //         do nothing
               } else {
                 retSet.push(
                   <span key={valArr[i]} className="valHeaderRow">
@@ -72,6 +47,7 @@ class SpreadsheetCoreRecursiveClick extends Component {
                 lastOne = valArr;
               }
             }
+            
           })}
         </section>
         <section className="datalibrary">
@@ -82,16 +58,11 @@ class SpreadsheetCoreRecursiveClick extends Component {
             let retSet = [];
 
             for (let i = 0; i < keyArr.length; i++) {
-
-              // if (keyArr[i] === "$loki") {
-              //   lastkey = valArr[i];
-              // }
-
               if (keyArr[i] === "locator") {
                 lastkey = valArr[i];
               }
-
               if (typeof keyArr[i] === "object") {
+                //  do nothing
               } else {
                 retSet.push(
                   <span key={keyArr[i]} className="valHeaderRow">
@@ -113,16 +84,11 @@ class SpreadsheetCoreRecursiveClick extends Component {
                 );
               }
               else {
-
                 retSet.push(
                   <span key={valArr[i]} className="valSheetRow">
-                    {/* <Link href="/Edit" tuple={lastkey} val={valArr[i]}>
-                      <a>{valArr[i] + " "}</a>
-                    </Link> */}
                     <Link href={{ pathname: '/Edit', query: { tuple: lastkey, val: valArr[i], store: theStore, table: theTable, objprop: keyArr[i]} }}>
                       <a>{valArr[i] + " "}</a>
                     </Link>
-                    {/* <a href={"/Edit/tuple/" + lastkey + "/val/" + valArr[i]}></a> */}
                   </span>
                 );
               }
