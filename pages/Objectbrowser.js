@@ -27,14 +27,6 @@ function noTrueArraysMan(objArr) {
   return returnArr;
 }
 
-function noTrueArraysMan2(objArr) {
-  let returnArr = [];
-  for (let f in objArr) {
-    returnArr.push(f);
-  }
-  return returnArr;
-}
-
 function createMarkup(html) {
   return { __html: html };
 }

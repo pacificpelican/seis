@@ -8,35 +8,9 @@ let lastkey = null;
 class SpreadsheetCoreRecursive extends Component {
   constructor() {
     super();
-
-    this.state = {
-      modalIsOpen: false
-    };
-
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-  }
-
-  openModal() {
-    this.setState({ modalIsOpen: true });
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // this.subtitle.style.color = '#f00';
-    let bg = document.getElementById("basicComponentDiv");
-    bg.style.visibility = "hidden";
-  }
-
-  closeModal() {
-    let bg = document.getElementById("basicComponentDiv");
-    bg.style.visibility = "visible";
-    this.setState({ modalIsOpen: false });
   }
 
   render(props) {
-
     var g;
     if (this.props.spreadsheetdata[0] !== undefined) {
       g = [{}, ...this.props.spreadsheetdata];

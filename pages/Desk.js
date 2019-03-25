@@ -232,7 +232,7 @@ class Desk extends Component {
           </span>
         </h1>
         <aside>
-          database tables to look up: dataset, default, seis
+          app database table:  seis
           <br />
 
           <br />

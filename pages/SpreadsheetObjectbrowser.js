@@ -15,22 +15,6 @@ try {
 
 const numberScale = 100000000000000;
 
-function noTrueArraysMan(objArr) {
-  let returnArr = [];
-  for (let i = 0; i < objArr.length; i++) {
-    returnArr.push(objArr[i]);
-  }
-  return returnArr;
-}
-
-function noTrueArraysMan2(objArr) {
-  let returnArr = [];
-  for (let f of objArr) {
-    returnArr.push(f);
-  }
-  return returnArr;
-}
-
 function createMarkup(html) {
   return { __html: html };
 }

@@ -56,8 +56,6 @@ function postDataWildcard(db, table, tuple, objval, objkey = "description", newV
       record = _collection.findObject({ locator: { '$aeq': tuple } });
     }
 
-    //  console.log(record);
-
     if (record === null) {
       record = _collection.findObject({ [objkeyString]: { '$contains': objvalString } });
     }
@@ -122,10 +120,16 @@ function postDataWildcard(db, table, tuple, objval, objkey = "description", newV
 
 }
 
-function postDataWildcard2(db, table, tuple, objval, objkey = "description", newVal = "__") {
+function deleteDataWildcard(db, table, tuple, objval, objkey = "description", newVal = "__") { // used with route that doesn't contain tuple
 
-  let dbDirectory = "/db/"
-  let db2 = new loki(__dirname + dbDirectory + db + ".json");
+  console.log(db, tuple, table);
+  console.log("collection to update: " + table);
+  let dbDirectory = __dirname + "/db/" + db + ".json"
+  console.log("loki dir: " + dbDirectory);
+  let db2 = new loki(dbDirectory);
+
+  theTuple = tuple;
+
   db2.loadDatabase({}, () => {
     let _collection = db2.getCollection(table);
 
@@ -134,7 +138,7 @@ function postDataWildcard2(db, table, tuple, objval, objkey = "description", new
         "Collection %s does not exist. Aborting attempt to edit ",
         table
       );
-      // EXIT
+
       throw new Error('ERROR: collection does not exist');
     }
     else {
@@ -147,19 +151,18 @@ function postDataWildcard2(db, table, tuple, objval, objkey = "description", new
     let objvalString = objval.toString();
 
     console.log(`${objkeyString}`);
-    console.log("setting record: " + objvalString + " " + tuple);
 
-    let record = _collection.findObject({ [objkeyString]: { '$contains': objvalString }, locator: { '$aeq': tuple } });
+    let record;
 
-    console.log(record);
-    console.log(newVal);
+    console.log("tuple: " + tuple);
 
-    record[`${objkeyString}`] = newVal;
+    record = _collection.findAndRemove({ locator: { '$aeq': tuple } });
 
-    _collection.update(record);
+    console.log('record ' + tuple + "removed (??)");
 
     db2.saveDatabase();
   });
+
 }
 
 app.prepare().then(() => {
@@ -319,6 +322,16 @@ app.prepare().then(() => {
     postDataWildcard(req.params.db, req.params.obj, req.params.tuple, req.params.objprop, req.params.objkey, req.params.newval);
 
     res.send(Object.assign({}, { Response: 'ok - POST update' }));
+  });
+
+  server.post("/api/1/deletedata/db/:db/object/:obj/objprop/:objprop/objkey/:objkey/newval/:newval/tuple/:tuple", (req, res) => {
+
+    console.log("running delete POST route");
+    console.log("obj: " + req.params.obj)
+
+    deleteDataWildcard(req.params.db, req.params.obj, req.params.tuple, req.params.objprop, req.params.objkey, req.params.newval);
+
+    res.send(Object.assign({}, { Response: 'ok - POST update (remove)' }));
   });
 
   server.get('*', (req, res) => {
