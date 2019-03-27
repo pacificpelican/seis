@@ -12,24 +12,12 @@ try {
   console.log("crypto not available in this NodeJS version");
 }
 
-const numberScale = 100000000000000;
-
 function noTrueArraysMan(objArr) {
   let returnArr = [];
   for (let i = 0; i < objArr.length; i++) {
     returnArr.push(objArr[i]);
   }
   return returnArr;
-}
-
-function createMarkup(html) {
-  return { __html: html };
-}
-
-function reloadOnce() {
-  console.log("about to reload");
-  return window.location.reload();
-  return false;
 }
 
 function eqSet(as, bs) {
@@ -111,10 +99,6 @@ class Spreadsheet extends Component {
         x.ethprice +
         "</span>"
     );
-
-    const mapX = this.forEachDbEntry(g);
-
-    let fowlfivedata = "btc-eth-bch-ltc-dsh-data";
 
     console.log("keyLibrary: " + this.keyLibrary);
 

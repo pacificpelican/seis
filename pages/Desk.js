@@ -31,22 +31,9 @@ function noTrueArraysMan(objArr) {
   return returnArr;
 }
 
-function noTrueArraysMan2(objArr) {
-  let returnArr = [];
-  for (let f in objArr) {
-    returnArr.push(f);
-  }
-  return returnArr;
-}
-
-function createMarkup(html) {
-  return { __html: html };
-}
-
 function reloadOnce() {
   console.log("about to reload");
   return window.location.reload();
-  return false;
 }
 
 function eqSet(as, bs) {
@@ -68,49 +55,12 @@ class Desk extends Component {
   };
   keyLibrary = new Set();
   lastOne = [];
+
   constructor() {
     super();
 
     this.handlecValueChange = this.handlecValueChange.bind(this);
     this.handleLookupButton = this.handleLookupButton.bind(this);
-  }
-
-  getCryptoNow() {
-    var retVal;
-    let that = this;
-    crypto.randomBytes(8, (err, buf) => {
-      if (err) throw err;
-      let rVal = buf.toString("hex");
-      console.log(
-        `${buf.length} bytes of random hex data: ${buf.toString("hex")}`
-      );
-      let rValHTML = `<span>${rVal}</span>`;
-      retVal = rVal;
-      that.setState({
-        cryptonow: retVal
-      });
-    });
-    return retVal;
-  }
-
-  getCryptoNowNotHex() {
-    var retVal;
-    let that = this;
-    crypto.randomBytes(32, (err, buf) => {
-      if (err) throw err;
-      let rVal = buf.toString("ascii");
-      console.log(
-        `${buf.length} bytes of random ASCII data: ${buf.toString("hex")}`
-      );
-      let rValHTML = `<span>${rVal}</span>`;
-      var re = / /;
-      let newstr = rVal.replace(re, "");
-      retVal = newstr;
-      that.setState({
-        cryptonowNH: retVal
-      });
-    });
-    return retVal;
   }
 
   runDBlookup(dbOBJ, db = 'seisdb') {
@@ -156,10 +106,7 @@ class Desk extends Component {
   }
 
   componentDidMount() {
-    var newCrypto2 = this.getCryptoNowNotHex();
-    this.setState(prevState => ({
-      cryptonowNH: newCrypto2
-    }));
+    
   }
 
   forEachDb(objArr) {
@@ -211,10 +158,6 @@ class Desk extends Component {
         x.ethprice +
         "</span>"
     );
-
-    const mapX = this.forEachDbEntry(g);
-
-    let fowlfivedata = "btc-eth-bch-ltc-dsh-data";
 
     console.log("keyLibrary: " + this.keyLibrary);
 

@@ -2,19 +2,14 @@
 //  Edit.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
-import Link from "next/link";
-
-import Spreadsheet from "./Spreadsheet";
 
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Card from '@material-ui/core/Card';
-import { Tab } from "@material-ui/core";
 
 function reloadOnce() {
   console.log("about to reload");
   return window.location.reload();
-  return false;
 }
 
 class Edit extends Component {

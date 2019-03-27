@@ -14,7 +14,6 @@ import { Tab } from "@material-ui/core";
 function reloadOnce() {
   console.log("about to reload");
   return window.location.reload();
-  return false;
 }
 
 class Delete extends Component {

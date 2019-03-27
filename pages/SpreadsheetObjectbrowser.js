@@ -13,18 +13,6 @@ try {
   console.log("crypto not available in this NodeJS version");
 }
 
-const numberScale = 100000000000000;
-
-function createMarkup(html) {
-  return { __html: html };
-}
-
-function reloadOnce() {
-  console.log("about to reload");
-  return window.location.reload();
-  return false;
-}
-
 function eqSet(as, bs) {
   //  via https://stackoverflow.com/questions/31128855/comparing-ecma6-sets-for-equality
   if (as.size !== bs.size) return false;
