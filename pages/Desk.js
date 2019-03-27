@@ -89,6 +89,10 @@ class Desk extends Component {
     window.history.back();
   }
 
+  pickSeis = () => {
+    this.setState({ userObjectAsk: "seis"});
+  }
+
   handlecValueChange(event) {
     let capturedVal = event.target.value;
     this.setState({ userObjectAsk: capturedVal });
@@ -175,9 +179,8 @@ class Desk extends Component {
           </span>
         </h1>
         <aside>
-          app database table:  seis
+          app database table: <span id="clickSeis" onClick={this.pickSeis}>seis</span>
           <br />
-
           <br />
         </aside>
         <section id="user-input">
