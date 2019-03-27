@@ -2,16 +2,8 @@
 //  SpreadsheetObjectbrowser.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
-import Link from "next/link";
 
 import SpreadsheetCoreRecursive from "./SpreadsheetCoreRecursive";
-
-let crypto;
-try {
-  crypto = require("crypto");
-} catch (err) {
-  console.log("crypto not available in this NodeJS version");
-}
 
 function eqSet(as, bs) {
   //  via https://stackoverflow.com/questions/31128855/comparing-ecma6-sets-for-equality
@@ -31,13 +23,9 @@ class SpreadsheetObjectbrowser extends Component {
     window.history.back();
   }
 
-  UNSAFE_componentWillMount() {}
-
-  componentDidMount() {}
-
   forEachDb(objArr) {
-    console.log("running forEachDb")
-    if (typeof objArr === 'undefined') {
+    console.log("running forEachDb");
+    if (typeof objArr === "undefined") {
       objArr = [{}];
     }
     for (let o of objArr) {
@@ -53,8 +41,6 @@ class SpreadsheetObjectbrowser extends Component {
   }
 
   forEachDbEntry(objArr) {
-    let retArr = [];
-
     for (let o of objArr) {
       let innerSet = new Set(Object.keys(o));
       let innerLibrary = new Set([...this.keyLibrary]);

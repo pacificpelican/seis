@@ -46,8 +46,8 @@ class Delete extends Component {
     console.log("running letServerUpdate");
     let apiUrlPrefix = '';
     let dest;
-    
-    dest = apiUrlPrefix + '/api/1/deletedata/db/' + store + '/object/' + obj + '/objprop/' + objprop + '/objkey/' + objkey + '/newval/' + newval + '/tuple/' + tuple;
+    //  /api/1/deletedata/db/:db/object/:obj/tuple/:tuple
+    dest = apiUrlPrefix + '/api/1/deletedata/db/' + store + '/object/' + obj + '/tuple/' + tuple;
 
     console.log("dest: " + dest);
 
@@ -96,11 +96,6 @@ class Delete extends Component {
         </h1>
         
         <section id="user-input">
-          <Input
-            id="crypto_output"
-            onChange={this.handlecValueChange}
-            value={this.state.userObjectAsk}
-          />
           <Button onClick={this.handlesubmit} variant="contained" color="primary" id="lookupDB">
             delete from DB
           </Button>

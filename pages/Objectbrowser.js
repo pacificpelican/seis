@@ -12,18 +12,9 @@ try {
   console.log("crypto not available in this NodeJS version");
 }
 
-function noTrueArraysMan(objArr) {
-  let returnArr = [];
-  for (let i = 0; i < objArr.length; i++) {
-    returnArr.push(objArr[i]);
-  }
-  return returnArr;
-}
-
 function reloadOnce() {
   console.log("about to reload");
   return window.location.reload();
-  return false;
 }
 
 class Objectbrowser extends Component {
@@ -79,25 +70,28 @@ class Objectbrowser extends Component {
   }
 
   requestSaveToDatabase = () => {
-    let objectToSaveTo;;
-    if ((typeof objectToSaveTo !== 'undefined') && ((objectToSaveTo !== null))) {
+    let objectToSaveTo;
+    if (typeof objectToSaveTo !== "undefined" && objectToSaveTo !== null) {
       objectToSaveTo = this.props.saveObject;
-    }
-    else {
+    } else {
       objectToSaveTo = "seis";
     }
 
-    console.log('objectToSaveTo');
+    console.log("objectToSaveTo");
     console.log(objectToSaveTo);
 
     let filteredObject;
-   
+
     filteredObject = this.state.dbdataArr;
     console.log(filteredObject.toString());
     this.saveObjectToDatabase(objectToSaveTo, filteredObject);
-  }
+  };
 
-  saveObjectToDatabase = (objectTo = "seis", newdata = "{data: 'none'}", db = "seisdb") => {
+  saveObjectToDatabase = (
+    objectTo = "seis",
+    newdata = "{data: 'none'}",
+    db = "seisdb"
+  ) => {
     console.log("new data to be written");
     console.log(newdata);
 
@@ -105,24 +99,29 @@ class Objectbrowser extends Component {
 
     console.log(newdataString);
 
-    let dest = "/api/1/saveobjectdata/db/" + db + "/obj/" + objectTo + "/newdata/" + newdataString.toString();
+    let dest =
+      "/api/1/saveobjectdata/db/" +
+      db +
+      "/obj/" +
+      objectTo +
+      "/newdata/" +
+      newdataString.toString();
 
     console.log("fetch save request: " + dest);
-    fetch(dest, {method: 'post'})
-    .then(function(response) {
-      if (response.ok) {
-        console.log("response ok");
-        
-        return response.json();
-      }
-      else {
-        throw new Error(response.Error);
-      }
-    })
-    .then(function(myReturn) {
-      console.log(myReturn);
-    });
-  }
+    fetch(dest, { method: "post" })
+      .then(function(response) {
+        if (response.ok) {
+          console.log("response ok");
+
+          return response.json();
+        } else {
+          throw new Error(response.Error);
+        }
+      })
+      .then(function(myReturn) {
+        console.log(myReturn);
+      });
+  };
 
   handlecValueChange(event) {
     let capturedVal = event.target.value;
@@ -137,18 +136,6 @@ class Objectbrowser extends Component {
   componentDidMount() {}
 
   render() {
-    let g = noTrueArraysMan(this.state.dbdataArr);
-
-    const map1 = g.map(
-      x =>
-        '<span class="spread btc">Bitcoin: ' +
-        x.btcprice +
-        "</span> " +
-        '<span class="spread eth">Ethereum:' +
-        x.ethprice +
-        "</span>"
-    );
-
     console.log("keyLibrary: " + this.keyLibrary);
 
     return (
@@ -156,9 +143,10 @@ class Objectbrowser extends Component {
         <button id="backButton" href="#" onClick={this.goBack}>
           ⬅️ back
         </button>
-        <div dangerouslySetInnerHTML={{ __html: this.x }}></div>
+        <div dangerouslySetInnerHTML={{ __html: this.x }} />
         <h1 id="desk">
-          mlBench Objectbrowser<span id="rollLink">
+          mlBench Objectbrowser
+          <span id="rollLink">
             {" "}
             <a href="#" onClick={reloadOnce}>
               reload()

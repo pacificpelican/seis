@@ -2,7 +2,7 @@
 //  SpreadsheetCore.js
 //  mlBench & danmckeown.info
 import React, { Component } from "react";
-import Link from 'next/link';
+import Link from "next/link";
 
 let lastkey = null;
 
@@ -14,26 +14,23 @@ class SpreadsheetCoreRecursiveClick extends Component {
   }
 
   render(props) {
-
-    let theStore = 'seisdb';   //  This is a magic database name that could be abstracted per the API
+    let theStore = "seisdb"; //  This is a magic database name that could be abstracted per the API
     let theTable = this.props.table;
 
     var g;
     if (this.props.spreadsheetdata[0] !== undefined) {
       g = [{}, ...this.props.spreadsheetdata];
-    }
-    else {
+    } else {
       g = [this.props.spreadsheetdata];
     }
 
     return (
       <div id="desk" className="mlBench-content">
         <section className="keylibrary">
-          {g.map(function (interVal) {
+          {g.map(function(interVal) {
             let valArr = Object.keys(interVal);
 
             let retSet = [];
-            let lastOne = "";
 
             for (let i = 0; i < valArr.length; i++) {
               if (typeof valArr[i] === "object") {
@@ -44,14 +41,12 @@ class SpreadsheetCoreRecursiveClick extends Component {
                     {valArr[i] + " "}
                   </span>
                 );
-                lastOne = valArr;
               }
             }
-            
           })}
         </section>
         <section className="datalibrary">
-          {g.map(function (interVal) {
+          {g.map(function(interVal) {
             let keyArr = Object.keys(interVal);
             let valArr = Object.values(interVal);
 
@@ -79,18 +74,42 @@ class SpreadsheetCoreRecursiveClick extends Component {
               if (typeof valArr[i] === "object") {
                 retSet.push(
                   <span key={valArr[i]} className="valSheetRow">
-                    <SpreadsheetCoreRecursiveClick spreadsheetdata={valArr[i]} table={theTable} store={theStore} />
+                    <SpreadsheetCoreRecursiveClick
+                      spreadsheetdata={valArr[i]}
+                      table={theTable}
+                      store={theStore}
+                    />
                   </span>
                 );
-              }
-              else {
+              } else {
                 retSet.push(
                   <span key={valArr[i]} className="valSheetRow">
-                    <Link href={{ pathname: '/Edit', query: { tuple: lastkey, val: valArr[i], store: theStore, table: theTable, objprop: keyArr[i]} }}>
+                    <Link
+                      href={{
+                        pathname: "/Edit",
+                        query: {
+                          tuple: lastkey,
+                          val: valArr[i],
+                          store: theStore,
+                          table: theTable,
+                          objprop: keyArr[i]
+                        }
+                      }}
+                    >
                       <a>{valArr[i] + " "}</a>
-                    </Link>
-                    {" "}
-                    <Link href={{ pathname: '/Delete', query: { tuple: lastkey, val: valArr[i], store: theStore, table: theTable, objprop: keyArr[i]} }}>
+                    </Link>{" "}
+                    <Link
+                      href={{
+                        pathname: "/Delete",
+                        query: {
+                          tuple: lastkey,
+                          val: valArr[i],
+                          store: theStore,
+                          table: theTable,
+                          objprop: keyArr[i]
+                        }
+                      }}
+                    >
                       <a>❌</a>
                     </Link>
                   </span>
@@ -106,7 +125,8 @@ class SpreadsheetCoreRecursiveClick extends Component {
         </section>
         <style jsx>{`
           .spread {
-            font-family: "Ubuntu Mono", "Inconsolata", "Hack", "Fira Code", Menlo, monospace;
+            font-family: "Ubuntu Mono", "Inconsolata", "Hack", "Fira Code",
+              Menlo, monospace;
           }
           .keylibrary {
             display: flex;

@@ -5,13 +5,6 @@ import React, { Component } from "react";
 
 import SpreadsheetCoreRecursiveClick from "./SpreadsheetCoreRecursiveClick";
 
-let crypto;
-try {
-  crypto = require("crypto");
-} catch (err) {
-  console.log("crypto not available in this NodeJS version");
-}
-
 function noTrueArraysMan(objArr) {
   let returnArr = [];
   for (let i = 0; i < objArr.length; i++) {
@@ -30,18 +23,9 @@ function eqSet(as, bs) {
 class Spreadsheet extends Component {
   keyLibrary = new Set();
   lastOne = [];
-  constructor() {
-    super();
-  }
 
   goBack() {
     window.history.back();
-  }
-
-  UNSAFE_componentWillMount() {
-  }
-
-  componentDidMount() {
   }
 
   forEachDb(objArr) {
@@ -61,8 +45,6 @@ class Spreadsheet extends Component {
     let retArr = [];
 
     for (let o of objArr) {
-      //    console.log(o);
-
       let innerSet = new Set(Object.keys(o));
       let innerLibrary = new Set([...this.keyLibrary]);
 
@@ -90,21 +72,15 @@ class Spreadsheet extends Component {
     const theStore = this.props.store;
     const theTable = this.props.table;
 
-    const map1 = g.map(
-      x =>
-        '<span class="spread btc">Bitcoin: ' +
-        x.btcprice +
-        "</span> " +
-        '<span class="spread eth">Ethereum:' +
-        x.ethprice +
-        "</span>"
-    );
-
     console.log("keyLibrary: " + this.keyLibrary);
 
     return (
       <div id="desk-wrapper" className="mlBench-content">
-        <SpreadsheetCoreRecursiveClick spreadsheetdata={g} store={theStore} table={theTable} />
+        <SpreadsheetCoreRecursiveClick
+          spreadsheetdata={g}
+          store={theStore}
+          table={theTable}
+        />
         <style>{`
         
         `}</style>

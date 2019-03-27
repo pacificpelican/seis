@@ -1,4 +1,4 @@
-//  seis SpreadsheetCore copyright 2017-2018
+//  seis SpreadsheetCore copyright 2017-2019
 //  SpreadsheetCore.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
@@ -14,19 +14,16 @@ class SpreadsheetCoreRecursive extends Component {
     var g;
     if (this.props.spreadsheetdata[0] !== undefined) {
       g = [{}, ...this.props.spreadsheetdata];
-    }
-    else {
+    } else {
       g = [this.props.spreadsheetdata];
     }
 
     return (
       <div id="desk" className="mlBench-content">
         <section id="keylibrary">
-          {g.map(function (interVal) {
+          {g.map(function(interVal) {
             let valArr = Object.keys(interVal);
-
             let retSet = [];
-            let lastOne = "";
 
             for (let i = 0; i < valArr.length; i++) {
               if (typeof valArr[i] === "object") {
@@ -37,13 +34,12 @@ class SpreadsheetCoreRecursive extends Component {
                     {valArr[i] + " "}
                   </span>
                 );
-                lastOne = valArr;
               }
             }
           })}
         </section>
         <section id="datalibrary">
-          {g.map(function (interVal) {
+          {g.map(function(interVal) {
             let keyArr = Object.keys(interVal);
             let valArr = Object.values(interVal);
 
@@ -74,9 +70,7 @@ class SpreadsheetCoreRecursive extends Component {
                     <SpreadsheetCoreRecursive spreadsheetdata={valArr[i]} />
                   </span>
                 );
-              } 
-              else {
-                
+              } else {
                 retSet.push(
                   <span key={valArr[i]} className="valSheetRow">
                     {valArr[i] + " "}
