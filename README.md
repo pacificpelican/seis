@@ -5,7 +5,7 @@
 
 - You can view objects by entering them into the input at <a href="/Objectbrowser">Objectbrowser</a>
 - After visualizing the object with the `enter your JSON` button you can persist the data by pressing the `save to DB` button
-- These saved objects can be viewed at <a href="/Desk">Desk</a> (search for seis for the saved data in chronological order)
+- These saved objects can be viewed at <a href="/Desk">Desk</a> (search for seis as the database object name) in chronological order
 
 ===
 ===

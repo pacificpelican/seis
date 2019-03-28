@@ -1,30 +1,28 @@
-//  seis Edit copyright 2017-2019
-//  Edit.js
-//  via mlBench & danmckeown.info
+//  seis copyright 2017-2019
+//  About.js
 import React, { Component } from "react";
+import Link from "next/link";
+
+import Spreadsheet from "./Spreadsheet";
 
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import Card from "@material-ui/core/Card";
+import { Tab } from "@material-ui/core";
 
 function reloadOnce() {
   console.log("about to reload");
   return window.location.reload();
 }
 
-class Edit extends Component {
+class About extends Component {
   state = {
     Ok: true,
-    entry: "",
-    cryptonowNumber: 0,
-    userObjectAsk: "_",
-    wildMode: true
+    entry: ""
   };
 
   constructor(props) {
     super();
-
-    this.handlecValueChange = this.handlecValueChange.bind(this);
   }
 
   handlecValueChange = event => {
@@ -49,19 +47,13 @@ class Edit extends Component {
     console.log("running letServerUpdate");
     let apiUrlPrefix = "";
     let dest;
-
+    //  /api/1/deletedata/db/:db/object/:obj/tuple/:tuple
     dest =
       apiUrlPrefix +
-      "/api/1/updatedata/db/" +
+      "/api/1/deletedata/db/" +
       store +
       "/object/" +
       obj +
-      "/objprop/" +
-      objprop +
-      "/objkey/" +
-      objkey +
-      "/newval/" +
-      newval +
       "/tuple/" +
       tuple;
 
@@ -118,7 +110,7 @@ class Edit extends Component {
         </header>
 
         <h1 id="desk">
-          apple-picker Object Prop Editor
+          apple-picker Object Deleter
           <span id="rollLink">
             {" "}
             <a href="#" onClick={reloadOnce}>
@@ -127,34 +119,29 @@ class Edit extends Component {
           </span>
         </h1>
 
-        <section id="user-input">
-          <Input
-            id="crypto_output"
-            onChange={this.handlecValueChange}
-            value={this.state.userObjectAsk}
-          />
-          <Button
-            onClick={this.handlesubmit}
-            variant="contained"
-            color="primary"
-            id="lookupDB"
-          >
-            update in DB
-          </Button>
-        </section>
         <Card>
           <section id="propsInfo">
-            <span>
-              val: {val}
-              <br />
-              tuple: {tuple}
-              <br />
-              table: {table}
-              <br />
-              store: {store}
-              <br />
-              prop: {prop}
-            </span>
+            <h3>seis</h3>
+
+            <h6>
+              an object cycle manager by [Dan McKeown](http://danmckeown.info)
+            </h6>
+            <br />
+            <span id="copright">copyright 2019</span>
+            <br />
+            <li>
+              You can view objects by entering them into the input at{" "}
+              <a href="/Objectbrowser">Objectbrowser</a>
+            </li>
+            <li>
+              After visualizing the object with the `enter your JSON` button you
+              can persist the data by pressing the `save to DB` button
+            </li>
+            <li>
+              These saved objects can be viewed at <a href="/Desk">Desk</a>{" "}
+              (search for seis as the database object name) in chronological
+              order
+            </li>
           </section>
         </Card>
 
@@ -196,4 +183,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+export default About;

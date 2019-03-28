@@ -86,6 +86,22 @@ class Delete extends Component {
         <button id="backButton" href="#" onClick={this.goBack}>
           ⬅️ back
         </button>
+
+        <header id="topheader">
+          <nav id="topnav">
+            <ul id="navlist">
+              <li id="website">
+                <a href="../../../..">SEIS</a>
+              </li>
+              <li>
+                <a href="https://bitbucket.org/pacificpelican/seis/src/master/">
+                  Bitbucket
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        
         <h1 id="desk">
           apple-picker Object Deleter<span id="rollLink">
             {" "}

@@ -2,7 +2,7 @@
 //  Objectbrowser.js
 //  via apple-picker, mlBench, and danmckeown.info #5
 import React, { Component } from "react";
-
+import { TextInput, Button, Pane } from "evergreen-ui";
 import SpreadsheetObjectbrowser from "./SpreadsheetObjectbrowser";
 
 let crypto;
@@ -36,9 +36,8 @@ class Objectbrowser extends Component {
     this.x = `<header id='topheader'>
     <nav id='topnav'>
       <ul id='navlist'>
-        <li id="website"><a href='https://pacificio.com'>Get Your Web Site</a></li>
-        <li><a href='http://eepurl.com/8auar'>Email List</a></li>
-        <li><a href="https://github.com/pacificpelican">GitHub</a></li>
+        <li id="website"><a href='../../../..'>SEIS</a></li>
+        <li><a href="https://bitbucket.org/pacificpelican/seis/src/master/">Bitbucket</a></li>
       </ul>
     </nav>
     </header>`;
@@ -154,27 +153,29 @@ class Objectbrowser extends Component {
           </span>
         </h1>
         <section id="user-input">
-          <input
+          <TextInput
             type="object"
             id="crypto_output"
             onChange={this.handlecValueChange}
             value={this.state.dbdataArr}
           />
           <br />
-          <button onClick={this.handleLookupButton} id="lookupDB">
+          <Button onClick={this.handleLookupButton} id="lookupDB">
             enter your JSON
-          </button>
+          </Button>
         </section>
         <aside id="dbRequest">
-          <button id="btn-save" onClick={this.requestSaveToDatabase}>
+          <Button id="btn-save" onClick={this.requestSaveToDatabase}>
             Save to DB
-          </button>
+          </Button>
         </aside>
         <div id="objectCopy" className="dataReadout">
-          <details>
-            <summary>object</summary>
-            <p>{this.state.dbdataArrState}</p>
-          </details>
+          <Pane>
+            <details>
+              <summary>object</summary>
+              <p>{this.state.dbdataArrState}</p>
+            </details>
+          </Pane>
         </div>
         <SpreadsheetObjectbrowser dbdataArr={this.state.dbdataArrState} />
         <style jsx global>{`
@@ -200,6 +201,10 @@ class Objectbrowser extends Component {
           }
           nav#topnav #website {
             background: #ffcaa3;
+          }
+          section#user-input, aside#dbRequest, Input {
+            margin-top: calc(5px + 0.4vh);
+            margin-bottom: calc(7px + 0.4vh);
           }
         `}</style>
       </div>
