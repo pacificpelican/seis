@@ -3,6 +3,8 @@
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
 
+import { withRouter } from 'next/router';
+
 import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import Card from "@material-ui/core/Card";
@@ -36,13 +38,15 @@ class Edit extends Component {
   };
 
   handlesubmit = event => {
+    const {router} = this.props
+    console.log(router);
     console.log("about to update collection");
     let cont = this.letServerUpdate(
-      this.props.url.query.store,
-      this.props.url.query.table,
-      this.props.url.query.tuple,
-      this.props.url.query.val,
-      this.props.url.query.objprop,
+      router.query.store,
+      router.query.table,
+      router.query.tuple,
+      router.query.val,
+      router.query.objprop,
       this.state.userObjectAsk
     );
   };
@@ -185,4 +189,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+export default withRouter(Edit);

@@ -11,20 +11,6 @@ import Card from '@material-ui/core/Card';
 
 import Headernav from "./Headernav";
 
-let crypto;
-try {
-  crypto = require("crypto");
-} catch (err) {
-  console.log("crypto not available in this NodeJS version");
-}
-
-const numberScale = 100000000000000;
-
-function math_floor_random_number(scale) {
-  var newdigit = Math.floor(Math.random() * scale + 1);
-  return newdigit;
-}
-
 function reloadOnce() {
   console.log("about to reload");
   return window.location.reload();
@@ -40,7 +26,6 @@ function eqSet(as, bs) {
 class Desk extends Component {
   state = {
     Ok: true,
-    cryptonowNumber: 0,
     userObjectAsk: "",
     dbdata: "-",
     dbdataArr: [],
@@ -94,13 +79,6 @@ class Desk extends Component {
 
   handleLookupButton(event) {
     let cont = this.runDBlookup(this.state.userObjectAsk);
-  }
-
-  UNSAFE_componentWillMount() {
-    var newCrypto3 = math_floor_random_number(numberScale);
-    this.setState(prevState => ({
-      cryptonowNumber: newCrypto3
-    }));
   }
 
   componentDidMount() {
