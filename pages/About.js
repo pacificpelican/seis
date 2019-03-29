@@ -1,14 +1,10 @@
 //  seis copyright 2017-2019
 //  About.js
 import React, { Component } from "react";
-import Link from "next/link";
 
-import Spreadsheet from "./Spreadsheet";
-
-import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
 import Card from "@material-ui/core/Card";
-import { Tab } from "@material-ui/core";
+
+import Headernav from "./Headernav";
 
 function reloadOnce() {
   console.log("about to reload");
@@ -25,89 +21,18 @@ class About extends Component {
     super();
   }
 
-  handlecValueChange = event => {
-    console.log(event.target.value);
-    let capturedVal = event.target.value;
-    this.setState({ userObjectAsk: capturedVal });
-  };
-
-  handlesubmit = event => {
-    console.log("about to update collection");
-    let cont = this.letServerUpdate(
-      this.props.url.query.store,
-      this.props.url.query.table,
-      this.props.url.query.tuple,
-      this.props.url.query.val,
-      this.props.url.query.objprop,
-      this.state.userObjectAsk
-    );
-  };
-
-  letServerUpdate(store, obj, tuple, objprop, objkey, newval) {
-    console.log("running letServerUpdate");
-    let apiUrlPrefix = "";
-    let dest;
-    //  /api/1/deletedata/db/:db/object/:obj/tuple/:tuple
-    dest =
-      apiUrlPrefix +
-      "/api/1/deletedata/db/" +
-      store +
-      "/object/" +
-      obj +
-      "/tuple/" +
-      tuple;
-
-    console.log("dest: " + dest);
-
-    fetch(dest, { method: "post" })
-      .then(function(response) {
-        if (response.ok) {
-          console.log("response ok");
-          return response.json();
-        } else {
-          throw new Error(response.Error);
-        }
-      })
-      .then(function(myReturn) {
-        console.log(myReturn);
-      });
-  }
-
-  componentDidMount(props) {
-    this.setState({ userObjectAsk: this.props.url.query.val });
-  }
-
   goBack() {
     window.history.back();
   }
 
   render(props) {
-    const tuple = this.props.url.query.tuple;
-    let val = this.props.url.query.val;
-    let store = this.props.url.query.store;
-    let table = this.props.url.query.table;
-    let prop = this.props.url.query.objprop;
-
     return (
       <div id="editContainer" className="mlBench-content-wrappers">
         <button id="backButton" href="#" onClick={this.goBack}>
           ⬅️ back
         </button>
 
-        <header id="topheader">
-          <nav id="topnav">
-            <ul id="navlist">
-              <li id="website">
-                <a href="../../../..">SEIS</a>
-              </li>
-              <li>
-                <a href="https://bitbucket.org/pacificpelican/seis/src/master/">
-                  Bitbucket
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <Headernav />
 
         <h1 id="desk">
           apple-picker Object Deleter

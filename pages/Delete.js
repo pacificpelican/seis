@@ -2,14 +2,11 @@
 //  Edit.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
-import Link from "next/link";
-
-import Spreadsheet from "./Spreadsheet";
 
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
 import Card from '@material-ui/core/Card';
-import { Tab } from "@material-ui/core";
+
+import Headernav from "./Headernav";
 
 function reloadOnce() {
   console.log("about to reload");
@@ -46,7 +43,7 @@ class Delete extends Component {
     console.log("running letServerUpdate");
     let apiUrlPrefix = '';
     let dest;
-    //  /api/1/deletedata/db/:db/object/:obj/tuple/:tuple
+
     dest = apiUrlPrefix + '/api/1/deletedata/db/' + store + '/object/' + obj + '/tuple/' + tuple;
 
     console.log("dest: " + dest);
@@ -87,20 +84,7 @@ class Delete extends Component {
           ⬅️ back
         </button>
 
-        <header id="topheader">
-          <nav id="topnav">
-            <ul id="navlist">
-              <li id="website">
-                <a href="../../../..">SEIS</a>
-              </li>
-              <li>
-                <a href="https://bitbucket.org/pacificpelican/seis/src/master/">
-                  Bitbucket
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <Headernav />
         
         <h1 id="desk">
           apple-picker Object Deleter<span id="rollLink">
@@ -146,9 +130,6 @@ class Delete extends Component {
           }
           #lookupDB {
             margin-left: calc(1vh + 10px);
-          }
-          #results {
-            font-family: "Inconsolata", "Anonymous Pro", "Hack", Menlo, monospace;
           }
           div#deskContainer {
             background: #f7f8f9;

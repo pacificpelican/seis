@@ -7,6 +7,8 @@ import Button from "@material-ui/core/Button";
 import Input from "@material-ui/core/Input";
 import Card from "@material-ui/core/Card";
 
+import Headernav from "./Headernav";
+
 function reloadOnce() {
   console.log("about to reload");
   return window.location.reload();
@@ -102,20 +104,7 @@ class Edit extends Component {
           ⬅️ back
         </button>
 
-        <header id="topheader">
-          <nav id="topnav">
-            <ul id="navlist">
-              <li id="website">
-                <a href="../../../..">SEIS</a>
-              </li>
-              <li>
-                <a href="https://bitbucket.org/pacificpelican/seis/src/master/">
-                  Bitbucket
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <Headernav />
 
         <h1 id="desk">
           apple-picker Object Prop Editor

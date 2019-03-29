@@ -25,14 +25,6 @@ function math_floor_random_number(scale) {
   return newdigit;
 }
 
-function noTrueArraysMan(objArr) {
-  let returnArr = [];
-  for (let i = 0; i < objArr.length; i++) {
-    returnArr.push(objArr[i]);
-  }
-  return returnArr;
-}
-
 function reloadOnce() {
   console.log("about to reload");
   return window.location.reload();
@@ -153,18 +145,6 @@ class Desk extends Component {
   }
 
   render() {
-    let g = noTrueArraysMan(this.state.dbdataArr);
-
-    const map1 = g.map(
-      x =>
-        '<span class="spread btc">Bitcoin: ' +
-        x.btcprice +
-        "</span> " +
-        '<span class="spread eth">Ethereum:' +
-        x.ethprice +
-        "</span>"
-    );
-
     console.log("keyLibrary: " + this.keyLibrary);
 
     return (
