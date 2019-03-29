@@ -2,6 +2,7 @@
 //  Edit.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
+import { withRouter } from 'next/router';
 
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -35,8 +36,9 @@ class Delete extends Component {
   }
 
   handlesubmit = (event) => {
+    const {router} = this.props;
     console.log("about to update collection");
-    let cont = this.letServerUpdate(this.props.url.query.store, this.props.url.query.table, this.props.url.query.tuple, this.props.url.query.val, this.props.url.query.objprop, this.state.userObjectAsk);
+    let cont = this.letServerUpdate(router.query.store, router.query.table, router.query.tuple, router.query.val, router.query.objprop, this.state.userObjectAsk);
   }
 
   letServerUpdate(store, obj, tuple, objprop, objkey, newval) {
@@ -64,7 +66,8 @@ class Delete extends Component {
   }
 
   componentDidMount(props) {
-    this.setState({userObjectAsk : this.props.url.query.val});
+    const {router} = this.props;
+    this.setState({userObjectAsk : router.query.val});
   }
 
   goBack() {
@@ -72,11 +75,12 @@ class Delete extends Component {
   }
 
   render(props) {
-    const tuple = this.props.url.query.tuple;
-    let val = this.props.url.query.val;
-    let store = this.props.url.query.store;
-    let table = this.props.url.query.table;
-    let prop = this.props.url.query.objprop;
+    const {router} = this.props;
+    const tuple = router.query.tuple;
+    let val = router.query.val;
+    let store = router.query.store;
+    let table = router.query.table;
+    let prop = router.query.objprop;
 
     return (
       <div id="editContainer" className="mlBench-content-wrappers">
@@ -143,4 +147,4 @@ class Delete extends Component {
   }
 }
 
-export default Delete;
+export default withRouter(Delete);

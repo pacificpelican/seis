@@ -38,7 +38,7 @@ class Edit extends Component {
   };
 
   handlesubmit = event => {
-    const {router} = this.props
+    const {router} = this.props;
     console.log(router);
     console.log("about to update collection");
     let cont = this.letServerUpdate(
@@ -88,7 +88,8 @@ class Edit extends Component {
   }
 
   componentDidMount(props) {
-    this.setState({ userObjectAsk: this.props.url.query.val });
+    const {router} = this.props;
+    this.setState({ userObjectAsk: router.query.val });
   }
 
   goBack() {
@@ -96,11 +97,12 @@ class Edit extends Component {
   }
 
   render(props) {
-    const tuple = this.props.url.query.tuple;
-    let val = this.props.url.query.val;
-    let store = this.props.url.query.store;
-    let table = this.props.url.query.table;
-    let prop = this.props.url.query.objprop;
+    const {router} = this.props;
+    const tuple = router.query.tuple;
+    let val = router.query.val;
+    let store = router.query.store;
+    let table = router.query.table;
+    let prop = router.query.objprop;
 
     return (
       <div id="editContainer" className="mlBench-content-wrappers">
