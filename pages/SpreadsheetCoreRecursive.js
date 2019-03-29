@@ -3,8 +3,6 @@
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
 
-let lastkey = null;
-
 class SpreadsheetCoreRecursive extends Component {
   constructor() {
     super();
@@ -42,10 +40,6 @@ class SpreadsheetCoreRecursive extends Component {
           {g.map(function(interVal) {
             let keyArr = Object.keys(interVal);
             let valArr = Object.values(interVal);
-
-            if (keyArr[0] === "key") {
-              lastkey = valArr[0];
-            }
 
             let retSet = [];
 

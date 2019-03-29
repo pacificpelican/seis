@@ -28,9 +28,7 @@ class Desk extends Component {
     Ok: true,
     userObjectAsk: "",
     dbdata: "-",
-    dbdataArr: [],
-    indexURL: "",
-    lastHeader: []
+    dbdataArr: []
   };
   keyLibrary = new Set();
   lastOne = [];

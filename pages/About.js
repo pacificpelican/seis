@@ -35,7 +35,7 @@ class About extends Component {
         <Headernav />
 
         <h1 id="desk">
-          apple-picker Object Deleter
+          About
           <span id="rollLink">
             {" "}
             <a href="#" onClick={reloadOnce}>
@@ -49,10 +49,10 @@ class About extends Component {
             <h3>seis</h3>
 
             <h6>
-              an object cycle manager by [Dan McKeown](http://danmckeown.info)
+              an object cycle manager by <a href="http://danmckeown.info">Dan McKeown</a>
             </h6>
             <br />
-            <span id="copright">copyright 2019</span>
+            <span id="copright">copyright 2019 all rights reserved</span>
             <br />
             <li>
               You can view objects by entering them into the input at{" "}
@@ -62,17 +62,23 @@ class About extends Component {
               After visualizing the object with the `enter your JSON` button you
               can persist the data by pressing the `save to DB` button
             </li>
+            <li>Database is saved to the <a href="../db/seisdb.json">/db/seisdb.json</a> file</li>
             <li>
               These saved objects can be viewed at <a href="/Desk">Desk</a>{" "}
               (search for seis as the database object name) in chronological
               order
             </li>
+            <li>Edit and Delete are given the parameters they require to work via clicks on the links in Desk output</li>
+            <li>When an object is created, along with the normal metadata, a special locator property is added.  This is used as a kind of ID for editing and deleting</li>
           </section>
         </Card>
 
         <footer id="deskFooter">
-          powered by <b>mlBench Spreadsheetcore</b> by{" "}
-          <a href="http://danmckeown.info">Dan McKeown</a>
+          powered by <b>mlBench/apple-picker Spreadsheetcore</b>
+        </footer>
+
+        <footer id="seisFooter">
+          <a href="https://pacificio.com">pacificIO</a>
         </footer>
 
         <style jsx global>{`

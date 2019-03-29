@@ -5,13 +5,6 @@ import React, { Component } from "react";
 import { TextInput, Button, Pane } from "evergreen-ui";
 import SpreadsheetObjectbrowser from "./SpreadsheetObjectbrowser";
 
-let crypto;
-try {
-  crypto = require("crypto");
-} catch (err) {
-  console.log("crypto not available in this NodeJS version");
-}
-
 function reloadOnce() {
   console.log("about to reload");
   return window.location.reload();
@@ -19,8 +12,6 @@ function reloadOnce() {
 
 class Objectbrowser extends Component {
   state = {
-    Ok: true,
-    cryptonowNumber: 0,
     userObjectAsk: "",
     dbdata: "-",
     dbdataArr: [],
@@ -33,35 +24,23 @@ class Objectbrowser extends Component {
   constructor() {
     super();
 
-    this.x = `<header id='topheader'>
-    <nav id='topnav'>
-      <ul id='navlist'>
-        <li id="website"><a href='../../../..'>SEIS</a></li>
-        <li><a href="https://bitbucket.org/pacificpelican/seis/src/master/">Bitbucket</a></li>
+    this.x = `<header id="topheader">
+    <nav id="topnav">
+      <ul id="navlist">
+        <li id="website">
+          <a href="../../../..">SEIS</a> | <a href="../../About">About</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/pacificpelican/seis/src/master/">
+            Bitbucket
+          </a>
+        </li>
       </ul>
     </nav>
-    </header>`;
+  </header>`;
 
     this.handlecValueChange = this.handlecValueChange.bind(this);
     this.handleLookupButton = this.handleLookupButton.bind(this);
-  }
-
-  getCryptoNow() {
-    var retVal;
-    let that = this;
-    crypto.randomBytes(8, (err, buf) => {
-      if (err) throw err;
-      let rVal = buf.toString("hex");
-      console.log(
-        `${buf.length} bytes of random hex data: ${buf.toString("hex")}`
-      );
-      let rValHTML = `<span>${rVal}</span>`;
-      retVal = rVal;
-      that.setState({
-        cryptonow: retVal
-      });
-    });
-    return retVal;
   }
 
   goBack() {
@@ -132,8 +111,6 @@ class Objectbrowser extends Component {
     this.setState({ dbdataArrState: capturedVal });
   }
 
-  componentDidMount() {}
-
   render() {
     console.log("keyLibrary: " + this.keyLibrary);
 
@@ -155,7 +132,7 @@ class Objectbrowser extends Component {
         <section id="user-input">
           <TextInput
             type="object"
-            id="crypto_output"
+            id="obj_input"
             onChange={this.handlecValueChange}
             value={this.state.dbdataArr}
           />

@@ -18,11 +18,7 @@ function reloadOnce() {
 
 class Edit extends Component {
   state = {
-    Ok: true,
-    entry: "",
-    cryptonowNumber: 0,
-    userObjectAsk: "_",
-    wildMode: true
+    userObjectAsk: "_"
   };
 
   constructor(props) {
