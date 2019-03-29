@@ -111,6 +111,15 @@ class Objectbrowser extends Component {
     this.setState({ dbdataArrState: capturedVal });
   }
 
+  componentDidMount(props) {
+    console.log("running componentDidMount");
+    if (this.props.dataArray) {
+      let newObj = this.props.dataArray;
+      this.setState({ dbdataArr: newObj });
+      console.log("setting initial data");
+    }
+  }
+
   render() {
     console.log("keyLibrary: " + this.keyLibrary);
 

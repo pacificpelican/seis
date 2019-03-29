@@ -79,10 +79,6 @@ class Desk extends Component {
     let cont = this.runDBlookup(this.state.userObjectAsk);
   }
 
-  componentDidMount() {
-    
-  }
-
   forEachDb(objArr) {
     for (let o of objArr) {
       let keyset = Object.keys(o);
