@@ -5,9 +5,10 @@ import React, { Component } from "react";
 
 import { withRouter } from 'next/router';
 
-import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
-import Card from "@material-ui/core/Card";
+//  import Button from "@material-ui/core/Button";
+import { Button, TextInput } from "grommet";
+//  import Input from "@material-ui/core/Input";
+//  import Card from "@material-ui/core/Card";
 
 import Headernav from "./Headernav";
 
@@ -119,21 +120,19 @@ class Edit extends Component {
         </h1>
 
         <section id="user-input">
-          <Input
+          <TextInput
             id="crypto_output"
             onChange={this.handlecValueChange}
             value={this.state.userObjectAsk}
           />
+          <br />
           <Button
             onClick={this.handlesubmit}
-            variant="contained"
-            color="primary"
             id="lookupDB"
-          >
-            update in DB
-          </Button>
+            label="update in DB"
+          />
         </section>
-        <Card>
+        <div>
           <section id="propsInfo">
             <span>
               val: {val}
@@ -147,7 +146,7 @@ class Edit extends Component {
               prop: {prop}
             </span>
           </section>
-        </Card>
+        </div>
 
         <footer id="deskFooter">
           powered by <b>mlBench Spreadsheetcore</b> by{" "}

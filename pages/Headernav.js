@@ -12,5 +12,14 @@ export default () => (
         </li>
       </ul>
     </nav>
+    <style jsx>{`
+      header#topheader {
+        font-family: "Inconsolata", "Anonymous Pro", "Hack", Menlo,
+              monospace;
+      }
+      a, a:visited {
+        color: black;
+      }
+    `}</style>
   </header>
 );
