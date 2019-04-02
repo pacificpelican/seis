@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import { TextInput, Button, Pane } from "evergreen-ui";
 import SpreadsheetObjectbrowser from "./SpreadsheetObjectbrowser";
 import Headernav from "./Headernav";
+import Errorboundary from "./Errorboundary";
 
 function reloadOnce() {
   console.log("about to reload");
@@ -149,7 +150,9 @@ class Objectbrowser extends Component {
             </details>
           </Pane>
         </div>
-        <SpreadsheetObjectbrowser dbdataArr={this.state.dbdataArrState} />
+        <Errorboundary>
+          <SpreadsheetObjectbrowser dbdataArr={this.state.dbdataArrState} />
+        </Errorboundary>
         <style jsx global>{`
           h1#desk {
             font-family: Futura, "Ubuntu", "Lucida Grande", "Roboto", Helvetica,
