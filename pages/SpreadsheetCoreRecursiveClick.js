@@ -14,7 +14,7 @@ class SpreadsheetCoreRecursiveClick extends Component {
   }
 
   render(props) {
-    let theStore = "seisdb"; //  This is a magic database name that could be abstracted per the API
+    let theStore = this.props.store;
     let theTable = this.props.table;
 
     var g;

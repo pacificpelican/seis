@@ -27,6 +27,7 @@ class Desk extends Component {
   state = {
     Ok: true,
     userObjectAsk: "",
+    userDBrequest: "seisdb",
     dbdata: "-",
     dbdataArr: []
   };
@@ -75,8 +76,13 @@ class Desk extends Component {
     this.setState({ userObjectAsk: capturedVal });
   }
 
+  handleDBvalChange = (event) => {
+    let capturedVal = event.target.value;
+    this.setState({ userDBrequest: capturedVal });
+  }
+
   handleLookupButton(event) {
-    let cont = this.runDBlookup(this.state.userObjectAsk);
+    let cont = this.runDBlookup(this.state.userObjectAsk, this.state.userDBrequest);
   }
 
   forEachDb(objArr) {
@@ -124,7 +130,9 @@ class Desk extends Component {
         <button id="backButton" href="#" onClick={this.goBack}>
           ⬅️ back
         </button>
+
         <Headernav />
+
         <h1 id="desk">
           apple-picker Яecursive Object Desk<span id="rollLink">
             {" "}
@@ -133,8 +141,15 @@ class Desk extends Component {
             </a>
           </span>
         </h1>
+
+        <section id="dbInput">
+          <section id="user-db-input">
+            <span id="db-label">database: </span><Input id="user-db-name-input" onChange={this.handleDBvalChange} value={this.state.userDBrequest} />
+          </section>
+        </section>
+        
         <aside>
-          app database table: <span id="clickSeis" onClick={this.pickSeis}>seis</span>
+          app database table: [<span id="clickSeis" onClick={this.pickSeis}>seis</span>]
           <br />
           <br />
         </aside>
@@ -149,7 +164,7 @@ class Desk extends Component {
           </Button>
         </section>
         <Card id="results">
-          <Spreadsheet dbdataArr={this.state.dbdataArr} table={this.state.userObjectAsk} store="seisdb" />
+          <Spreadsheet dbdataArr={this.state.dbdataArr} table={this.state.userObjectAsk} store={this.state.userDBrequest} />
         </Card>
 
         <footer id="deskFooter">
@@ -176,6 +191,12 @@ class Desk extends Component {
           }
           div#deskContainer {
             background: #f7f8f9;
+          }
+          section#dbInput {
+            margin-bottom: calc(3vh + 10px);
+          }
+          span#db-label {
+            font-family: Courier, sans-serif;
           }
         `}</style>
       </div>

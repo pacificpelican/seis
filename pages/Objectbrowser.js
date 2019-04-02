@@ -19,7 +19,8 @@ class Objectbrowser extends Component {
     dbdataArr: [],
     dbdataArrState: [],
     indexURL: "",
-    lastHeader: []
+    lastHeader: [],
+    dbName: "seisdb"
   };
   keyLibrary = new Set();
   lastOne = [];
@@ -49,7 +50,7 @@ class Objectbrowser extends Component {
 
     filteredObject = this.state.dbdataArr;
     console.log(filteredObject.toString());
-    this.saveObjectToDatabase(objectToSaveTo, filteredObject);
+    this.saveObjectToDatabase(objectToSaveTo, filteredObject, this.state.dbName);
   };
 
   saveObjectToDatabase = (
@@ -74,7 +75,7 @@ class Objectbrowser extends Component {
 
     console.log("fetch save request: " + dest);
     fetch(dest, { method: "post" })
-      .then(function(response) {
+      .then(function (response) {
         if (response.ok) {
           console.log("response ok");
 
@@ -83,7 +84,7 @@ class Objectbrowser extends Component {
           throw new Error(response.Error);
         }
       })
-      .then(function(myReturn) {
+      .then(function (myReturn) {
         console.log(myReturn);
       });
   };
@@ -96,6 +97,11 @@ class Objectbrowser extends Component {
   handleLookupButton(event) {
     let capturedVal = this.state.dbdataArr;
     this.setState({ dbdataArrState: capturedVal });
+  }
+
+  handleDBNameChange = (event) => {
+    let capturedVal = event.target.value;
+    this.setState({ dbName: capturedVal });
   }
 
   componentDidMount(props) {
@@ -126,6 +132,14 @@ class Objectbrowser extends Component {
           </span>
         </h1>
         <section id="user-input">
+          <span id="database">database: </span>
+          <input
+            type="string"
+            id="obj_input_db"
+            onChange={this.handleDBNameChange}
+            value={this.state.dbName}
+          />
+          <br />
           <TextInput
             type="object"
             id="obj_input"
@@ -171,12 +185,18 @@ class Objectbrowser extends Component {
             flex-flow: wrap;
             align-items: center;
           }
+          span#database {
+            font-family: Courier, sans-serif;
+          }
           i.notColor {
             background: azure;
           }
           section#user-input, aside#dbRequest, Input {
             margin-top: calc(5px + 0.4vh);
             margin-bottom: calc(7px + 0.4vh);
+          }
+          input#obj_input_db {
+            height: calc(1rem + 10px);
           }
         `}</style>
       </div>
