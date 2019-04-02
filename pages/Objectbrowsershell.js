@@ -9,6 +9,6 @@ let dataChunk = `{
 
 export default () => (
   <div>
-    <Objectbrowser dataArray={dataChunk} />
+    <Objectbrowser dataArray={dataChunk} dataTable='secondTable' dataBase='secondDB' />
   </div>
 )

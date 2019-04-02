@@ -14,7 +14,7 @@ function reloadOnce() {
 
 class Objectbrowser extends Component {
   state = {
-    userObjectAsk: "",
+    userObjectAsk: "seis",
     dbdata: "-",
     dbdataArr: [],
     dbdataArrState: [],
@@ -36,21 +36,11 @@ class Objectbrowser extends Component {
   }
 
   requestSaveToDatabase = () => {
-    let objectToSaveTo;
-    if (typeof objectToSaveTo !== "undefined" && objectToSaveTo !== null) {
-      objectToSaveTo = this.props.saveObject;
-    } else {
-      objectToSaveTo = "seis";
-    }
-
-    console.log("objectToSaveTo");
-    console.log(objectToSaveTo);
-
     let filteredObject;
 
     filteredObject = this.state.dbdataArr;
     console.log(filteredObject.toString());
-    this.saveObjectToDatabase(objectToSaveTo, filteredObject, this.state.dbName);
+    this.saveObjectToDatabase(this.state.userObjectAsk, filteredObject, this.state.dbName);
   };
 
   saveObjectToDatabase = (
@@ -104,12 +94,29 @@ class Objectbrowser extends Component {
     this.setState({ dbName: capturedVal });
   }
 
-  componentDidMount(props) {
+  pickSeis = () => {
+    this.setState({ userObjectAsk: "seis"});
+  }
+
+  handleTABLEValueChange = (event) => {
+    let capturedVal = event.target.value;
+    this.setState({ userObjectAsk: capturedVal });
+  }
+
+  componentDidMount(props) {  //  Auto-fill the input fields if props are provided to Objectbrowser
     console.log("running componentDidMount");
     if (this.props.dataArray) {
       let newObj = this.props.dataArray;
       this.setState({ dbdataArr: newObj });
       console.log("setting initial data");
+    }
+    if (this.props.dataTable) {
+      let newObj = this.props.dataTable;
+      this.setState({ userObjectAsk: newObj });
+    }
+    if (this.props.dataBase) {
+      let newObj = this.props.dataBase;
+      this.setState({ dbName: newObj });
     }
   }
 
@@ -138,6 +145,13 @@ class Objectbrowser extends Component {
             id="obj_input_db"
             onChange={this.handleDBNameChange}
             value={this.state.dbName}
+          />
+          <br />
+          <span id="database">table: </span>
+          <input
+            id="db_table"
+            onChange={this.handleTABLEValueChange}
+            value={this.state.userObjectAsk}
           />
           <br />
           <TextInput
@@ -195,7 +209,7 @@ class Objectbrowser extends Component {
             margin-top: calc(5px + 0.4vh);
             margin-bottom: calc(7px + 0.4vh);
           }
-          input#obj_input_db {
+          input#obj_input_db, input#db_table {
             height: calc(1rem + 10px);
           }
         `}</style>
