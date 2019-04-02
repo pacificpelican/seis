@@ -9,6 +9,96 @@
 - Clicking on the red X will take you to the Delete page where you can confirm deletion (of that entire object)
 - Clicking on a value will take you to Edit where you can change that value (and all other values with the same property name in that same object)
 
+
+**[About](/About)**
+
+---
+
+<section id="propsInfo">
+  <h3><a href="https://bitbucket.org/pacificpelican/seis/src/master/">seis</a></h3>
+  <h6>
+    an object cycle manager by{" "}
+    <a href="http://danmckeown.info">Dan McKeown</a>
+  </h6>
+  <br />
+  <span id="copright">copyright 2019 all rights reserved</span>
+  <br />
+  <li>
+    You can view objects by entering them into the input at{" "}
+    <a href="/Objectbrowser">Objectbrowser</a>
+  </li>
+  <li>
+    After visualizing the object with the `enter your JSON` button you
+    can persist the data by pressing the `save to DB` button
+  </li>
+  <li>
+    Database is saved to the{" "}
+    <a href="../db/seisdb.json">/db/seisdb.json</a> file
+  </li>
+  <li>
+    These saved objects can be viewed at <a href="/Desk">Desk</a>{" "}
+    (search for seis as the database object name) in chronological
+    order
+  </li>
+  <li>
+    Edit and Delete are given the parameters they require to work via
+    clicks on the links in Desk output
+  </li>
+  <li>
+    When an object is created, along with the normal metadata, a
+    special locator property is added. This is used as a kind of ID
+    for editing and deleting
+  </li>
+</section>
+
+---
+
+<h3>API</h3>
+<ul>
+  <li>
+    GET database object collection:{" "}
+    <code>/api/1/getdbdata/db/seisdb/object/seis</code>
+  </li>
+  <li>
+    POST create new database object:{" "}
+    <code>
+      /api/1/saveobjectdata/db/seisdb/obj/seis/newdata/%22%20%7B%20%5C%22name%5C%22%3A%20%5C%22Bogey%5C%22%20%7D%22
+    </code>
+  </li>
+  <li>
+    POST update existing database object by locator property{" "}
+    <code>
+      /api/1/updatedata/db/seisdb/object/seis/objprop/Bogey/objkey/name/newval/Belle/tuple/99372
+    </code>
+  </li>
+  <li>
+    POST delete existing database object by locator property{" "}
+    <code>/api/1/deletedata/db/seisdb/object/seis/tuple/15540</code>
+  </li>
+</ul>
+
+---
+
+<h3>App Component Tree</h3>
+<ul>
+  <li>
+    <a href="./Objectbrowser">Objectbrowser</a>.js →
+    SpreadsheetObjectbrowser → SpreadsheetCoreRecursive
+  </li>
+  <li>
+    <a href="./Desk">Desk</a>.js → Spreadsheet →
+    SpreadsheetCoreRecursiveClick
+  </li>
+</ul>
+
+---
+
+<footer id="deskFooter">
+  powered by <b> SpreadsheetCore Code developed for <a href="http://mlBench.pacificio.com">mlBench</a>/<a href="http://applepicker.pacificio.com">apple-picker</a></b>
+</footer>
+
+--
+
 ===
 ===
 Project Scaffolded with create-next-app:

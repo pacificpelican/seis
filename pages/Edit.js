@@ -2,13 +2,8 @@
 //  Edit.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
-
 import { withRouter } from 'next/router';
-
-//  import Button from "@material-ui/core/Button";
 import { Button, TextInput } from "grommet";
-//  import Input from "@material-ui/core/Input";
-//  import Card from "@material-ui/core/Card";
 
 import Headernav from "./Headernav";
 

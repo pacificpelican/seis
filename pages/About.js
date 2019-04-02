@@ -121,7 +121,7 @@ class About extends Component {
         </Card>
 
         <footer id="deskFooter">
-          powered by <b>mlBench/apple-picker Spreadsheetcore</b>
+          powered by <b> SpreadsheetCore Code developed for <a href="http://mlBench.pacificio.com">mlBench</a>/<a href="http://applepicker.pacificio.com">apple-picker</a></b>
         </footer>
 
         <footer id="seisFooter">
