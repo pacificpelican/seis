@@ -89,6 +89,7 @@ class SpreadsheetCoreRecursive extends Component {
             margin-right: 10px;
             margin-bottom: 0.6rem;
             line-height: 1.3;
+            font-family: "Lato", "Roboto", "Segoe UI", Helvetica, sans-serif; 
           }
           span.valHeaderRow {
             background-color: lightblue;
@@ -96,6 +97,7 @@ class SpreadsheetCoreRecursive extends Component {
             margin-right: 10px;
             margin-bottom: 0.6rem;
             line-height: 1.3;
+            font-family: "Lato", "Roboto", "Segoe UI", Helvetica, sans-serif;
           }
         `}</style>
       </div>

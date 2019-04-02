@@ -4,6 +4,7 @@
 import React, { Component } from "react";
 import { TextInput, Button, Pane } from "evergreen-ui";
 import SpreadsheetObjectbrowser from "./SpreadsheetObjectbrowser";
+import Headernav from "./Headernav";
 
 function reloadOnce() {
   console.log("about to reload");
@@ -23,21 +24,6 @@ class Objectbrowser extends Component {
   lastOne = [];
   constructor() {
     super();
-
-    this.x = `<header id="topheader">
-    <nav id="topnav">
-      <ul id="navlist">
-        <li id="website">
-          <a href="../../../..">SEIS</a> | <a href="../../About">About</a>
-        </li>
-        <li>
-          <a href="https://bitbucket.org/pacificpelican/seis/src/master/">
-            Bitbucket
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>`;
 
     this.handlecValueChange = this.handlecValueChange.bind(this);
     this.handleLookupButton = this.handleLookupButton.bind(this);
@@ -128,7 +114,7 @@ class Objectbrowser extends Component {
         <button id="backButton" href="#" onClick={this.goBack}>
           ⬅️ back
         </button>
-        <div dangerouslySetInnerHTML={{ __html: this.x }} />
+        <Headernav />
         <h1 id="desk">
           mlBench Objectbrowser
           <span id="rollLink">
@@ -184,9 +170,6 @@ class Objectbrowser extends Component {
           }
           i.notColor {
             background: azure;
-          }
-          nav#topnav #website {
-            background: #ffcaa3;
           }
           section#user-input, aside#dbRequest, Input {
             margin-top: calc(5px + 0.4vh);

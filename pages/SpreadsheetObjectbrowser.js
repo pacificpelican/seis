@@ -78,9 +78,6 @@ class SpreadsheetObjectbrowser extends Component {
     }
 
     console.log("type: " + typeof g);
-
-    let fowlfivedata = "btc-eth-bch-ltc-dsh-data";
-
     console.log("keyLibrary: " + this.keyLibrary);
 
     return (

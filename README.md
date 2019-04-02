@@ -9,6 +9,7 @@
 - Clicking on the red X will take you to the Delete page where you can confirm deletion (of that entire object)
 - Clicking on a value will take you to Edit where you can change that value (and all other values with the same property name in that same object)
 
+---
 
 **[About](/About)**
 
@@ -94,9 +95,8 @@
 ---
 
 <footer id="deskFooter">
-  powered by <b> SpreadsheetCore Code developed for <a href="http://mlBench.pacificio.com">mlBench</a>/<a href="http://applepicker.pacificio.com">apple-picker</a></b>
+  powered by <b> SpreadsheetCore Code developed for <a href="http://mlBench.pacificio.com">mlBench</a> <a href="https://bitbucket.org/pacificpelican/mlbench/src/master/">💻</a>/<a href="http://applepicker.pacificio.com">apple-picker</a> <a href="https://bitbucket.org/pacificpelican/apple-picker/src/master/">💻</a></b>
 </footer>
-
 --
 
 ===
