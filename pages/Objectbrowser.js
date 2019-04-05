@@ -1,4 +1,4 @@
-//  seis Objectbrowser copyright 2017-2019
+//  seis copyright 2017-2019
 //  Objectbrowser.js
 //  via apple-picker, mlBench, and danmckeown.info #5
 import React, { Component } from "react";

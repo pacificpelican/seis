@@ -1,4 +1,4 @@
-//  seis Edit copyright 2017-2019
+//  seis copyright 2017-2019
 //  Edit.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";

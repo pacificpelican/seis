@@ -1,5 +1,5 @@
-//  seis Objectbrowser copyright 2017-2019
-//  Objectbrowser.js
+//  seis copyright 2017-2019
+//  Errorboundary.js
 //  via apple-picker, mlBench, and danmckeown.info #5
 import React, { Component } from "react";
 
@@ -18,7 +18,6 @@ class Errorboundary extends Component {
     this.setState({
       isError: true, errorMessage: error.message
     });
-    
   }
 
   render(props) {

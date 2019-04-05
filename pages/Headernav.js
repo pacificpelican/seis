@@ -1,3 +1,6 @@
+//  seis copyright 2017-2019
+//  Headernav.js
+//  via apple-picker, mlBench, and danmckeown.info #5
 export default () => (
   <header id="topheader">
     <nav id="topnav">
@@ -14,10 +17,10 @@ export default () => (
     </nav>
     <style jsx>{`
       header#topheader {
-        font-family: "Inconsolata", "Anonymous Pro", "Hack", Menlo,
-              monospace;
+        font-family: "Inconsolata", "Anonymous Pro", "Hack", Menlo, monospace;
       }
-      a, a:visited {
+      a,
+      a:visited {
         color: black;
       }
     `}</style>

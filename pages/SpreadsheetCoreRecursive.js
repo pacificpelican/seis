@@ -1,5 +1,5 @@
-//  seis SpreadsheetCore copyright 2017-2019
-//  SpreadsheetCore.js
+//  seis copyright 2017-2019
+//  SpreadsheetCoreRecursive.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
 

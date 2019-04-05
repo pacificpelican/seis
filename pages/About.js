@@ -1,5 +1,6 @@
 //  seis copyright 2017-2019
 //  About.js
+//  via mlBench & danmckeown.info
 import React, { Component } from "react";
 
 import Card from "@material-ui/core/Card";

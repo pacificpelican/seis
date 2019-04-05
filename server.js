@@ -175,7 +175,7 @@ function deleteDataWildcard(
     _collection.findAndRemove({ locator: { $aeq: tuple } });
     db2.saveDatabase();
 
-    console.log("record " + tuple + "removed (💣🤷)");
+    console.log("record " + tuple + " removed (💣🤷)");
   });
 }
 
@@ -349,25 +349,6 @@ app.prepare().then(() => {
       );
 
       res.send(Object.assign({}, { Response: "ok - POST update" }));
-    }
-  );
-
-  server.post(
-    "/api/1/deletedata/db/:db/object/:obj/objprop/:objprop/objkey/:objkey/newval/:newval/tuple/:tuple",
-    (req, res) => {
-      console.log("running delete POST route");
-      console.log("obj: " + req.params.obj);
-
-      deleteDataWildcard(
-        req.params.db,
-        req.params.obj,
-        req.params.tuple,
-        req.params.objprop,
-        req.params.objkey,
-        req.params.newval
-      );  //  the last 3 parameters can be null
-
-      res.send(Object.assign({}, { Response: "ok - POST update (remove)" }));
     }
   );
 

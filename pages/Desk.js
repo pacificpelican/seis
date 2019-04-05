@@ -1,4 +1,4 @@
-//  seis Desk copyright 2017-2019
+//  seis copyright 2017-2019
 //  Desk.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
@@ -99,8 +99,6 @@ class Desk extends Component {
   }
 
   forEachDbEntry(objArr) {
-    let retArr = [];
-
     for (let o of objArr) {
       let innerSet = new Set(Object.keys(o));
       let innerLibrary = new Set([...this.keyLibrary]);

@@ -1,5 +1,5 @@
-//  seis SpreadsheetCore copyright 2017-2018
-//  SpreadsheetCore.js
+//  seis SpreadsheetCoreRecursiveClick copyright 2017-2018
+//  SpreadsheetCoreRecursiveClick.js
 //  mlBench & danmckeown.info
 import React, { Component } from "react";
 import Link from "next/link";
@@ -103,10 +103,8 @@ class SpreadsheetCoreRecursiveClick extends Component {
                         pathname: "/Delete",
                         query: {
                           tuple: lastkey,
-                          val: valArr[i],
                           store: theStore,
-                          table: theTable,
-                          objprop: keyArr[i]
+                          table: theTable
                         }
                       }}
                     >
