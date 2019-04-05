@@ -1,6 +1,6 @@
 {
   "name": "seis",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
@@ -21,6 +21,7 @@
     "object-array-converter": " ^1.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "@smooth-ui/core-sc": "^10.0.4"
   }
 }

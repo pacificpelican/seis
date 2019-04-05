@@ -4,7 +4,7 @@
 import React, { Component } from "react";
 import { withRouter } from 'next/router';
 
-import Button from '@material-ui/core/Button';
+import { Button } from '@smooth-ui/core-sc';
 import Card from '@material-ui/core/Card';
 
 import Headernav from "./Headernav";
@@ -98,7 +98,7 @@ class Delete extends Component {
         </h1>
         
         <section id="user-input">
-          <Button onClick={this.handlesubmit} variant="contained" color="primary" id="lookupDB">
+          <Button size="lg" onClick={this.handlesubmit} variant="danger" fontFamily="monospace" id="lookupDB">
             delete from DB
           </Button>
         </section>
@@ -129,6 +129,10 @@ class Delete extends Component {
           }
           section#user-input {
             margin-bottom: calc(3vh + 10px);
+            color: white;
+          }
+          section#user-input a {
+            color: white;
           }
           #lookupDB {
             margin-left: calc(1vh + 10px);
