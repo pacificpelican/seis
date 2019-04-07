@@ -108,13 +108,17 @@ class About extends Component {
                 </code>
               </li>
               <li>
-                POST update existing database object by locator property{" "}
+                POST (shallow) create new database object:{" "}
+                <code>/api/1/saveobjectdatashallow/db/spiraldb/obj/notes/newdata/%7B%22note%22%3A%22I%20love%20the%20cat!%22%2C%22savedAt%22%3A1554680275455%7D</code>
+              </li>
+              <li>
+                POST update existing database object by locator property:{" "}
                 <code>
                   /api/1/updatedata/db/seisdb/object/seis/objprop/Bogey/objkey/name/newval/Belle/tuple/99372
                 </code>
               </li>
               <li>
-                POST delete existing database object by locator property{" "}
+                POST delete existing database object by locator property:{" "}
                 <code>/api/1/deletedata/db/seisdb/object/seis/tuple/15540</code>
               </li>
             </ul>

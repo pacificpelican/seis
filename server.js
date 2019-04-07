@@ -314,6 +314,52 @@ app.prepare().then(() => {
     }
   );
 
+  server.post(
+    "/api/1/saveobjectdatashallow/db/:db/obj/:obj/newdata/:newdata",
+    (req, res) => {
+      const AccountsDB = new loki(__dirname + "/db/" + req.params.db + ".json");
+      console.log(req.params);
+      const theParam = req.params.obj.toString();
+      let newData = req.params.newdata;
+
+      AccountsDB.loadDatabase({}, function() {
+        let _collection = AccountsDB.getCollection(theParam);
+
+        if (!_collection) {
+          console.log(
+            "Collection %s does not exist. Creating ... 🎮",
+            theParam
+          );
+          _collection = AccountsDB.addCollection(theParam);
+        } else {
+          console.log("collection exists");
+        }
+
+        console.log("about to add tuple");
+        console.log(newData);
+        let serverObject = JSON.parse(newData);
+        //  serverObject = JSON.parse(serverObject);
+        console.log(serverObject);
+
+        let dbObject = Object.assign(serverObject, {
+          locator: Math.floor(Math.random() * locatorScale + 1),
+          created_at_time: Date.now()
+        });
+
+        console.log("tuple to save");
+        console.log(dbObject);
+
+        _collection.insertOne(dbObject);
+
+        console.log("saving to database: " + newData);
+        AccountsDB.saveDatabase();
+
+        let homeLink = "<a href='../../..'>Home</a>";
+        res.send(Object.assign({}, { result: "record created" }));
+      });
+    }
+  );
+
   server.get(
     "/api/1/updatedata/db/:db/object/:obj/objprop/:objprop/objkey/:objkey/newval/:newval",
     (req, res) => {

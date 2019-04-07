@@ -120,6 +120,15 @@ class Desk extends Component {
     return null;
   }
 
+  componentDidMount = () => {
+    if (this.props.userObjectAsk) {
+      this.setState({userObjectAsk: this.props.userObjectAsk})
+    }
+    if (this.props.userDBrequest) {
+      this.setState({userDBrequest: this.props.userDBrequest})
+    }
+  }
+
   render() {
     console.log("keyLibrary: " + this.keyLibrary);
 

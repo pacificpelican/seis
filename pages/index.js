@@ -33,6 +33,20 @@ export default () => (
         </Link>
       </li>
     </ul>
+    <br />
+    <h4>Apps</h4>
+    <ul id="apps">
+      <li>
+        <Link href="/Spiral">
+          <a>Spiral (Create Notes)</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/Spiralviewer">
+          <a>Spiralviewer (Read Notes)</a>
+        </Link>
+      </li>
+    </ul>
     <ul>
       <li>
         <Link href={{ pathname: "/posts", query: { id: "2" } }} as="/posts/2">
@@ -44,10 +58,10 @@ export default () => (
       <a href="https://pacificio.com">pacificIO</a>
     </footer>
     <style jsx>{`
-      ul#seis {
+      ul#seis, ul#apps {
         display: flex;
       }
-      ul#seis li {
+      ul#seis li, ul#apps li {
         width: calc(30px + 20vw);
         background: yellow;
         margin-right: calc(1vw + 2px);
