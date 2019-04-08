@@ -77,6 +77,7 @@ class About extends Component {
               Edit and Delete are given the URL parameters they require to work via
               clicks on the links in Desk output
             </li>
+            <li>Clicking on the red X will take you to the Delete page where you can confirm deletion (of that entire object)</li>
             <li>
               When an object is created, along with the normal metadata, a
               special locator property is added. This is used as a kind of ID
