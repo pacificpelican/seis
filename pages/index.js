@@ -6,6 +6,8 @@ import Headernav from "./Headernav";
 export default () => (
   <section id="homeContainer">
     <Headernav />
+    <h2 id="six">6️⃣</h2>
+    <h4>Components</h4>
     <ul id="seis">
       <li>
         <Link href="/Objectbrowser">
@@ -27,11 +29,6 @@ export default () => (
           <a>Delete (Destroy)</a>
         </Link>
       </li>
-      <li>
-        <Link href="/About">
-          <a>About</a>
-        </Link>
-      </li>
     </ul>
     <br />
     <h4>Apps</h4>
@@ -49,6 +46,11 @@ export default () => (
     </ul>
     <ul>
       <li>
+        <Link href="/About">
+          <a>About</a>
+        </Link>
+      </li>
+      <li>
         <Link href={{ pathname: "/posts", query: { id: "2" } }} as="/posts/2">
           <a>post #2</a>
         </Link>
@@ -58,16 +60,23 @@ export default () => (
       <a href="https://pacificio.com">pacificIO</a>
     </footer>
     <style jsx>{`
-      ul#seis, ul#apps {
+      ul#seis,
+      ul#apps {
         display: flex;
       }
-      ul#seis li, ul#apps li {
+      ul#seis li {
         width: calc(30px + 20vw);
         background: yellow;
         margin-right: calc(1vw + 2px);
       }
+      ul#apps li {
+        width: calc(30px + 20vw);
+        background: lightgreen;
+        margin-right: calc(1vw + 2px);
+      }
       .spread,
-      section#homeContainer, section#homeContainer a {
+      section#homeContainer,
+      section#homeContainer a {
         font-family: "Ubuntu Mono", "Inconsolata", "Hack", "Fira Code", Menlo,
           monospace;
         color: black;
@@ -93,6 +102,10 @@ export default () => (
         padding-right: calc(1px + 1vw);
         padding-top: calc(1px + 0.8vw);
         padding-bottom: calc(1px + 0.6vw);
+      }
+      h2#six {
+        margin-left: calc(3px + 2vw);
+        font-size: calc(3rem);
       }
     `}</style>
   </section>

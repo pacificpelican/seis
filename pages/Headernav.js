@@ -6,11 +6,14 @@ export default () => (
     <nav id="topnav">
       <ul id="navlist">
         <li id="website">
-          <a href="../../../..">SEIS</a> | <a href="../../About">About</a>
+          <a href="../../../..">SEIS</a>
+        </li>
+        <li>
+          <a href="../../About">About</a>
         </li>
         <li>
           <a href="https://bitbucket.org/pacificpelican/seis/src/master/">
-            Bitbucket
+            Code
           </a>
         </li>
       </ul>
@@ -22,6 +25,12 @@ export default () => (
       a,
       a:visited {
         color: black;
+      }
+      ul#navlist {
+        display: flex;
+      }
+      ul#navlist li {
+        margin-right: calc(10px + 3vw);
       }
     `}</style>
   </header>

@@ -47,14 +47,15 @@ class About extends Component {
 
         <Card>
           <section id="propsInfo">
+            <h3>6️⃣</h3>
             <h3>seis</h3>
             <h6>
               an object cycle manager by{" "}
               <a href="http://danmckeown.info">Dan McKeown</a>
             </h6>
             <br />
-            <span id="copright">copyright 2019 all rights reserved</span>
-            <br />
+            <span id="copright">copyright 2019</span>
+            <br /><br />
             <li>
               You can view objects by entering them into the input at{" "}
               <a href="/Objectbrowser">Objectbrowser</a>
@@ -64,7 +65,7 @@ class About extends Component {
               can persist the data by pressing the `save to DB` button
             </li>
             <li>
-              Database is saved to the{" "}
+              Database is saved by default to the{" "}
               <a href="../db/seisdb.json">/db/seisdb.json</a> file
             </li>
             <li>
@@ -73,7 +74,7 @@ class About extends Component {
               order
             </li>
             <li>
-              Edit and Delete are given the parameters they require to work via
+              Edit and Delete are given the URL parameters they require to work via
               clicks on the links in Desk output
             </li>
             <li>
@@ -200,6 +201,9 @@ class About extends Component {
             margin-block-start: calc(0.5vh + 5px);
             display: block;
             background: azure;
+          }
+          section#propsInfo, article#appTree {
+            padding-left: calc(2vw + 5px);
           }
         `}</style>
       </div>
