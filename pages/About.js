@@ -96,30 +96,49 @@ class About extends Component {
               </li>
             </ul>
             <h3>API</h3>
-            <ul>
+            <ul id="routes">
               <li>
                 GET database object collection:{" "}
                 <code>/api/1/getdbdata/db/seisdb/object/seis</code>
+                <span className="info">
+                  <a href="/Desk">Desk</a>, <a href="/Spiral">Spiralviewer</a>
+                </span>
+              </li>
+              <li>
+                GET one database object by locator:{" "}
+                <code>/api/1/getdbdata/db/seisdb/object/seis/tuple/14206</code>
               </li>
               <li>
                 POST create new database object:{" "}
                 <code>
                   /api/1/saveobjectdata/db/seisdb/obj/seis/newdata/%22%20%7B%20%5C%22name%5C%22%3A%20%5C%22Bogey%5C%22%20%7D%22
                 </code>
+                <span className="info">
+                  <a href="/Objectbrowser">Objectbrowser</a>
+                </span>
               </li>
               <li>
                 POST (shallow) create new database object:{" "}
                 <code>/api/1/saveobjectdatashallow/db/spiraldb/obj/notes/newdata/%7B%22note%22%3A%22I%20love%20the%20cat!%22%2C%22savedAt%22%3A1554680275455%7D</code>
+                <span className="info">
+                  <a href="/Spiral">Spiral</a>
+                </span>
               </li>
               <li>
                 POST update existing database object by locator property:{" "}
                 <code>
                   /api/1/updatedata/db/seisdb/object/seis/objprop/Bogey/objkey/name/newval/Belle/tuple/99372
                 </code>
+                <span className="info">
+                  <a href="/Edit">Edit</a>
+                </span>
               </li>
               <li>
                 POST delete existing database object by locator property:{" "}
                 <code>/api/1/deletedata/db/seisdb/object/seis/tuple/15540</code>
+                <span className="info">
+                  <a href="/Delete">Delete</a>
+                </span>
               </li>
             </ul>
           </article>
@@ -165,6 +184,22 @@ class About extends Component {
           section#propsInfo {
             font-family: "Roboto", "Ubuntu Sans", "Segoe UI", "Lucida Sans",
               Helvetica, sans-serif;
+          }
+          span.info {
+            display: block;
+          }
+          #appTree ul#routes li {
+            background: lightgreen;
+            margin-block-end: calc(1vh + 10px);
+          }
+          #appTree ul#routes span {
+            margin-block-start: calc(0.5vh + 5px);
+            background: lightblue;
+          }
+          #appTree ul#routes code {
+            margin-block-start: calc(0.5vh + 5px);
+            display: block;
+            background: azure;
           }
         `}</style>
       </div>

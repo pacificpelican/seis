@@ -222,6 +222,37 @@ app.prepare().then(() => {
     });
   });
 
+  var apiDataDB1 = {};
+  server.get("/api/1/getdbdata/db/:db/object/:obj/tuple/:tuple", (req, res) => {
+    const AccountsDB = new loki(__dirname + "/db/" + req.params.db + ".json");
+    console.log(req.params);
+    const theParam = req.params.obj.toString();
+    let newData = req.params.newdata;
+
+    AccountsDB.loadDatabase({}, function() {
+      let _collection = AccountsDB.getCollection(theParam);
+
+      if (!_collection) {
+        console.log("Collection %s does not exist. Creating ... 🎮", theParam);
+        _collection = AccountsDB.addCollection(theParam);
+      } else {
+        console.log("collection exists");
+      }
+
+      let tuple = req.params.tuple;
+      retData = _collection.findObject({
+        locator: { $aeq: tuple }
+      });
+      console.log(retData);
+      console.log(newData);
+      apiDataDB1 = retData;
+
+      let respObj = Object.assign({}, apiDataDB1);
+    //  let respArr = convertObj.toArray(respObj);
+      res.send(respObj);
+    });
+  });
+
   server.post(
     "/api/1/saveobjectdata/db/:db/obj/:obj/newdata/:newdata",
     (req, res) => {
