@@ -52,12 +52,13 @@
   <h3>App Component Tree</h3>
   <ul>
     <li>
-      <a href="./Objectbrowser">Objectbrowser</a>.js →
-      SpreadsheetObjectbrowser → SpreadsheetCoreRecursive
+      <a href="./Objectbrowser">Objectbrowser</a> → SpreadsheetObjectbrowser → SpreadsheetCoreRecursive
     </li>
     <li>
-      <a href="./Desk">Desk</a>.js → Spreadsheet →
-      SpreadsheetCoreRecursiveClick
+      <a href="./Desk">Desk</a> → Spreadsheet → SpreadsheetCoreRecursiveClick
+    </li>
+    <li>
+      <a href="./View">View</a> → SpreadsheetCoreRecursive
     </li>
   </ul>
   <h3>API</h3>
