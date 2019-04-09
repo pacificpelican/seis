@@ -100,6 +100,18 @@ class SpreadsheetCoreRecursiveClick extends Component {
                     </Link>{" "}
                     <Link
                       href={{
+                        pathname: "/View",
+                        query: {
+                          tuple: lastkey,
+                          store: theStore,
+                          table: theTable
+                        }
+                      }}
+                    >
+                      <a>🏤</a>
+                    </Link>{" "}
+                    <Link
+                      href={{
                         pathname: "/Delete",
                         query: {
                           tuple: lastkey,

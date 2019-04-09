@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import Card from "@material-ui/core/Card";
 
 import Headernav from "./Headernav";
+import Footernav from "./Footernav";
 
 function reloadOnce() {
   console.log("about to reload");
@@ -74,7 +75,7 @@ class About extends Component {
               order
             </li>
             <li>
-              Edit and Delete are given the URL parameters they require to work via
+              Edit, View and Delete are given the URL parameters they require to work via
               clicks on the links in Desk output
             </li>
             <li>Clicking on the red X will take you to the Delete page where you can confirm deletion (of that entire object)</li>
@@ -109,6 +110,9 @@ class About extends Component {
               <li>
                 GET one database object by locator:{" "}
                 <code>/api/1/getdbdata/db/seisdb/object/seis/tuple/14206</code>
+                <span className="info">
+                  <a href="/View">View</a>
+                </span>
               </li>
               <li>
                 POST create new database object:{" "}
@@ -146,9 +150,7 @@ class About extends Component {
           </article>
         </Card>
 
-        <footer id="deskFooter">
-          powered by <b> SpreadsheetCore Code developed for <a href="http://mlBench.pacificio.com">mlBench</a> <a href="https://bitbucket.org/pacificpelican/mlbench/src/master/">💻</a>/<a href="http://applepicker.pacificio.com">apple-picker</a> <a href="https://bitbucket.org/pacificpelican/apple-picker/src/master/">💻</a></b>
-        </footer>
+        <Footernav />
 
         <footer id="seisFooter">
           <a href="https://pacificio.com">pacificIO</a>

@@ -5,8 +5,8 @@ export default () => (
   <header id="topheader">
     <nav id="topnav">
       <ul id="navlist">
-        <li id="website">
-          <a href="../../../..">SEIS</a>
+        <li id="homelink">
+          <a href="../../../..">Home</a>
         </li>
         <li>
           <a href="../../About">About</a>

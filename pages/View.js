@@ -1,78 +1,74 @@
 //  seis copyright 2017-2019
-//  Edit.js
+//  View.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
 import { withRouter } from 'next/router';
 
-import { Button } from '@smooth-ui/core-sc';
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 
 import Headernav from "./Headernav";
 import Footernav from "./Footernav";
+
+import SpreadsheetcoreRecursive from "./SpreadsheetCoreRecursive";
 
 function reloadOnce() {
   console.log("about to reload");
   return window.location.reload();
 }
 
-class Delete extends Component {
+class View extends Component {
   state = {
     Ok: true,
     entry: '',
-    cryptonowNumber: 0,
-    userObjectAsk: '_',
-    wildMode: true
+    dbdataArr: []
   };
 
   constructor(props) {
     super();
-
-    this.handlecValueChange = this.handlecValueChange.bind(this);
   }
 
-  handlecValueChange = (event) => {
-    console.log(event.target.value)
-    let capturedVal = event.target.value;
-    this.setState({ userObjectAsk: capturedVal });
-  }
-
-  handlesubmit = (event) => {
-    const {router} = this.props;
-    console.log("about to update collection");
-    let cont = this.letServerUpdate(router.query.store, router.query.table, router.query.tuple);
-  }
-
-  letServerUpdate(store, obj, tuple) {
-    console.log("running letServerUpdate");
-    let apiUrlPrefix = '';
-    let dest;
-
-    dest = apiUrlPrefix + '/api/1/deletedata/db/' + store + '/object/' + obj + '/tuple/' + tuple;
-
-    console.log("dest: " + dest);
-
-    fetch(dest, {method: 'post'})
-      .then(function(response) {
+  runDBlookup(item = null, dbOBJ = 'seis', db = 'seisdb') {
+    let that = this;
+    let dest = "/api/1/getdbdata/db/" + db + "/object/" + dbOBJ + "/tuple/" + item;
+    console.log("FETCH REQUEST URL:")
+    console.log(dest);
+    fetch(dest, {})
+      .then(function (response) {
         if (response.ok) {
-          console.log("response ok");
+          for (var e in response.json) {
+            console.log(e);
+          }
+
           return response.json();
         }
-        else {
-          throw new Error(response.Error);
-        }
-    })
-      .then(function(myReturn) {
-        console.log(myReturn);
-    });
+        throw new Error("Network did not respond.");
+        return response.blob();
+      })
+      .then(function (myReturn) {
+        that.setState({ dbdataArr: myReturn });
+      });
   }
 
   componentDidMount(props) {
-    const {router} = this.props;
-    this.setState({userObjectAsk : router.query.val});
+    // const {router} = this.props;
+    // const tuple = router.query.tuple;
+    // let store = router.query.store;
+    // let table = router.query.table;
+    //  this.runDBlookup(tuple, table, store);
+    //  this.setState({userObjectAsk : router.query.val});
   }
 
   goBack() {
     window.history.back();
+  }
+
+  lookUp = () => {
+    const {router} = this.props;
+    const tuple = router.query.tuple;
+    let store = router.query.store;
+    let table = router.query.table;
+    this.runDBlookup(tuple, table, store);
   }
 
   render(props) {
@@ -90,7 +86,7 @@ class Delete extends Component {
         <Headernav />
         
         <h1 id="desk">
-          apple-picker Object Deleter<span id="rollLink">
+          Seis Object Viewer<span id="rollLink">
             {" "}
             <a href="#" onClick={reloadOnce}>
               reload()
@@ -99,9 +95,7 @@ class Delete extends Component {
         </h1>
         
         <section id="user-input">
-          <Button size="lg" onClick={this.handlesubmit} variant="danger" fontFamily="monospace" id="lookupDB">
-            delete from DB
-          </Button>
+         
         </section>
         <Card>
           <section id="propsInfo">
@@ -114,6 +108,15 @@ class Delete extends Component {
             </span>
           </section>
         </Card>
+
+        <Button id="lookup" onClick={this.lookUp}>
+          look up
+        </Button>
+
+        <section id="outputData">
+          {/* <SpreadsheetObjectbrowser dbdataArr={this.state.dbdataArr} /> */}
+          <SpreadsheetcoreRecursive spreadsheetdata={this.state.dbdataArr} />
+        </section>
 
         <Footernav />
         
@@ -142,10 +145,30 @@ class Delete extends Component {
           section#propsInfo {
             font-family: "Roboto", "Ubuntu Sans", "Segoe UI", "Lucida Sans", Helvetica, sans-serif;
           }
+          section#outputData {
+            margin-block-start: calc(2vh + 5px);
+            padding-inline-start: calc(2vh + 5px);
+          }
+          span#valHeaderRow, span#valSheetRow {
+            display: block;
+            margin-block-start: calc(2vh + 5px);
+            margin-block-end: calc(2vh + 5px);
+            padding-inline-start: calc(2vh + 5px);
+          }
+          div#desk-wrapper.mlBench-content div#desk {
+            width: 80vw;
+            display: grid;
+            grid-auto-columns: 75vw;
+            grid-gap: 10px;
+            grid-auto-rows: auto;
+            
+          }
+       
+    
         `}</style>
       </div>
     );
   }
 }
 
-export default withRouter(Delete);
+export default withRouter(View);

@@ -6,6 +6,7 @@ import { withRouter } from 'next/router';
 import { Button, TextInput } from "grommet";
 
 import Headernav from "./Headernav";
+import Footernav from "./Footernav";
 
 function reloadOnce() {
   console.log("about to reload");
@@ -143,10 +144,7 @@ class Edit extends Component {
           </section>
         </div>
 
-        <footer id="deskFooter">
-          powered by <b>mlBench Spreadsheetcore</b> by{" "}
-          <a href="http://danmckeown.info">Dan McKeown</a>
-        </footer>
+        <Footernav />
 
         <style jsx global>{`
           h1#desk,

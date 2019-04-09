@@ -1,4 +1,4 @@
-**[seis](https://seis.pacificio.com)**
+**[seis](http://seis.pacificio.com)**
 
 *an object cycle manager by [Dan McKeown](http://danmckeown.info)*
 *copyright 2019*
@@ -35,7 +35,7 @@
     order
   </li>
   <li>
-    Edit and Delete are given the URL parameters they require to work via
+    Edit, View and Delete are given the URL parameters they require to work via
     clicks on the links in Desk output
   </li>
   <li>Clicking on the red X will take you to the Delete page where you can confirm deletion (of that entire object)</li>
@@ -72,6 +72,9 @@
     <li>
       GET one database object by locator:{" "}
       <code>/api/1/getdbdata/db/seisdb/object/seis/tuple/14206</code>
+      <span className="info">
+        <a href="/View">View</a>
+      </span>
     </li>
     <li>
       POST create new database object:{" "}
@@ -111,7 +114,17 @@
 ---
 
 <footer id="deskFooter">
-  powered by <b> SpreadsheetCore Code developed for <a href="http://mlBench.pacificio.com">mlBench</a> <a href="https://bitbucket.org/pacificpelican/mlbench/src/master/">💻</a>/<a href="http://applepicker.pacificio.com">apple-picker</a> <a href="https://bitbucket.org/pacificpelican/apple-picker/src/master/">💻</a></b>
+  powered by{" "}
+  <b>
+    {" "}
+    <a href="https://seis.pacificio.com">SEIS</a>{" via "}
+    <a href="http://mlBench.pacificio.com">mlBench</a>{" "}
+    <a href="https://bitbucket.org/pacificpelican/mlbench/src/master/">💻</a>/
+    <a href="http://applepicker.pacificio.com">apple-picker</a>{" "}
+    <a href="https://bitbucket.org/pacificpelican/apple-picker/src/master/">
+      💻
+    </a>
+  </b>
 </footer>
 
 ===

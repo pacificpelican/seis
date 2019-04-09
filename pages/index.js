@@ -3,10 +3,22 @@ import Link from "next/link";
 
 import Headernav from "./Headernav";
 
+function reloadOnce() {
+  console.log("about to reload");
+  return window.location.reload();
+}
+
+function goBack() {
+  window.history.back();
+}
+
 export default () => (
   <section id="homeContainer">
+    <button id="backButton" href="#" onClick={goBack}>
+      ⬅️ back
+    </button>
     <Headernav />
-    <h2 id="six">6️⃣</h2>
+    <h2 id="six">6️⃣ SEIS</h2>
     <h4>Components</h4>
     <ul id="seis">
       <li>
@@ -17,6 +29,11 @@ export default () => (
       <li>
         <Link href="/Desk">
           <a>Desk (Read)</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/View">
+          <a>View (Read 1)</a>
         </Link>
       </li>
       <li>

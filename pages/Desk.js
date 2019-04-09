@@ -10,6 +10,7 @@ import Input from '@material-ui/core/Input';
 import Card from '@material-ui/core/Card';
 
 import Headernav from "./Headernav";
+import Footernav from "./Footernav";
 
 function reloadOnce() {
   console.log("about to reload");
@@ -174,9 +175,7 @@ class Desk extends Component {
           <Spreadsheet dbdataArr={this.state.dbdataArr} table={this.state.userObjectAsk} store={this.state.userDBrequest} />
         </Card>
 
-        <footer id="deskFooter">
-          powered by <b>mlBench Spreadsheetcore</b> by <a href="http://danmckeown.info">Dan McKeown</a>
-        </footer>
+        <Footernav />
 
         <style jsx global>{`
           h1#desk, aside {
