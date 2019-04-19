@@ -50,15 +50,6 @@ class View extends Component {
       });
   }
 
-  componentDidMount(props) {
-    // const {router} = this.props;
-    // const tuple = router.query.tuple;
-    // let store = router.query.store;
-    // let table = router.query.table;
-    //  this.runDBlookup(tuple, table, store);
-    //  this.setState({userObjectAsk : router.query.val});
-  }
-
   goBack() {
     window.history.back();
   }
@@ -114,7 +105,6 @@ class View extends Component {
         </Button>
 
         <section id="outputData">
-          {/* <SpreadsheetObjectbrowser dbdataArr={this.state.dbdataArr} /> */}
           <SpreadsheetcoreRecursive spreadsheetdata={this.state.dbdataArr} />
         </section>
 
@@ -161,10 +151,7 @@ class View extends Component {
             grid-auto-columns: 75vw;
             grid-gap: 10px;
             grid-auto-rows: auto;
-            
           }
-       
-    
         `}</style>
       </div>
     );

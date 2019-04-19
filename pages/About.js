@@ -31,6 +31,12 @@ class About extends Component {
           ⬅️ back
         </button>
 
+        <div id="joeypc">
+          <span id="animated">
+            {'⚅'}
+          </span>
+        </div>
+
         <Headernav />
 
         <h1 id="desk">
@@ -46,14 +52,15 @@ class About extends Component {
         <Card>
           <section id="propsInfo">
             <h3>6️⃣</h3>
-            <h3>seis</h3>
+            <h3><a href="http://seis.pacificio.com">seis</a></h3>
             <h6>
               an object cycle manager by{" "}
               <a href="http://danmckeown.info">Dan McKeown</a>
             </h6>
             <br />
             <span id="copright">copyright 2019</span>
-            <br /><br />
+            <br />
+            <br />
             <li>
               You can view objects by entering them into the input at{" "}
               <a href="/Objectbrowser">Objectbrowser</a>
@@ -72,10 +79,13 @@ class About extends Component {
               order
             </li>
             <li>
-              Edit, View and Delete are given the URL parameters they require to work via
-              clicks on the links in Desk output
+              Edit, View and Delete are given the URL parameters they require to
+              work via clicks on the links in Desk output
             </li>
-            <li>Clicking on the red X will take you to the Delete page where you can confirm deletion (of that entire object)</li>
+            <li>
+              Clicking on the red X will take you to the Delete page where you
+              can confirm deletion (of that entire object)
+            </li>
             <li>
               When an object is created, along with the normal metadata, a
               special locator property is added. This is used as a kind of ID
@@ -95,8 +105,7 @@ class About extends Component {
                 SpreadsheetCoreRecursiveClick
               </li>
               <li>
-                <a href="./View">View</a> → 
-                SpreadsheetCoreRecursive
+                <a href="./View">View</a> → SpreadsheetCoreRecursive
               </li>
             </ul>
             <h3>API</h3>
@@ -126,7 +135,9 @@ class About extends Component {
               </li>
               <li>
                 POST (shallow) create new database object:{" "}
-                <code>/api/1/saveobjectdatashallow/db/spiraldb/obj/notes/newdata/%7B%22note%22%3A%22I%20love%20the%20cat!%22%2C%22savedAt%22%3A1554680275455%7D</code>
+                <code>
+                  /api/1/saveobjectdatashallow/db/spiraldb/obj/notes/newdata/%7B%22note%22%3A%22I%20love%20the%20cat!%22%2C%22savedAt%22%3A1554680275455%7D
+                </code>
                 <span className="info">
                   <a href="/Spiral">Spiral</a>
                 </span>
@@ -163,7 +174,8 @@ class About extends Component {
             font-family: Futura, "Ubuntu", "Lucida Grande", "Roboto", Helvetica,
               sans-serif;
           }
-          section, article {
+          section,
+          article {
             font-family: "Courier", "Courier New", serif;
           }
           footer {
@@ -206,8 +218,38 @@ class About extends Component {
             display: block;
             background: azure;
           }
-          section#propsInfo, article#appTree {
+          section#propsInfo,
+          article#appTree {
             padding-left: calc(2vw + 5px);
+          }
+          #animated {
+            border-radius: 0.45em;
+            background: rgb(218, 215, 89);
+            background: radial-gradient(
+              circle,
+              rgba(218, 215, 89, 1) 24%,
+              rgba(179, 182, 221, 1) 38%,
+              rgba(179, 193, 221, 1) 60%
+            );
+            width: 711px;
+            height: 40px;
+            animation-duration: 5s;
+            animation-name: slidein;
+          }
+          @keyframes slidein {
+            from {
+              margin-left: 100%;
+              width: 20px;
+              background-color: blue;
+            }
+
+            to {
+              margin-left: 0%;
+              width: 700px;
+            }
+          }
+          div#joeypc {
+            font-size: calc(2rem + 2em);
           }
         `}</style>
       </div>

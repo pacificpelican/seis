@@ -1,13 +1,14 @@
 {
   "name": "seis",
-  "version": "0.9.10",
+  "version": "1.0.0",
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
+  "license": "ISC",
   "author": {
-    "email": "d@danmckeown.info",
+    "email": "dj@sf3am.com",
     "name": "Dan McKeown",
     "copyright": "2019"
   },
