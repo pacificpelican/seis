@@ -10,10 +10,7 @@ import Card from '@material-ui/core/Card';
 import Headernav from "./Headernav";
 import Footernav from "./Footernav";
 
-function reloadOnce() {
-  console.log("about to reload");
-  return window.location.reload();
-}
+import reloadOnce from "./reloadOnce";
 
 class Delete extends Component {
   state = {

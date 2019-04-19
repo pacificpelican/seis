@@ -3,11 +3,6 @@ import Link from "next/link";
 
 import Headernav from "./Headernav";
 
-function reloadOnce() {
-  console.log("about to reload");
-  return window.location.reload();
-}
-
 function goBack() {
   window.history.back();
 }

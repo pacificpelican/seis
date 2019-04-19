@@ -7,10 +7,7 @@ import SpreadsheetObjectbrowser from "./SpreadsheetObjectbrowser";
 import Headernav from "./Headernav";
 import Errorboundary from "./Errorboundary";
 
-function reloadOnce() {
-  console.log("about to reload");
-  return window.location.reload();
-}
+import reloadOnce from "./reloadOnce";
 
 class Objectbrowser extends Component {
   state = {

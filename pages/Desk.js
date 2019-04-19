@@ -12,17 +12,9 @@ import Card from '@material-ui/core/Card';
 import Headernav from "./Headernav";
 import Footernav from "./Footernav";
 
-function reloadOnce() {
-  console.log("about to reload");
-  return window.location.reload();
-}
+import eqSet from "./eqset";
 
-function eqSet(as, bs) {
-  //  via https://stackoverflow.com/questions/31128855/comparing-ecma6-sets-for-equality
-  if (as.size !== bs.size) return false;
-  for (var a of as) if (!bs.has(a)) return false;
-  return true;
-}
+import reloadOnce from "./reloadOnce";
 
 class Desk extends Component {
   state = {
