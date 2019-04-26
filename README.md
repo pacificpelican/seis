@@ -142,3 +142,5 @@ npm run dev
 yarn
 yarn dev
 ```
+
+`open http://localhost:3010`

@@ -6,7 +6,7 @@ const next = require("next");
 const loki = require("lokijs");
 const convertObj = require("object-array-converter");
 
-const port = parseInt(process.env.PORT, 10) || 3000;
+const port = parseInt(process.env.PORT, 10) || 3010;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -453,6 +453,7 @@ app.prepare().then(() => {
   });
 
   server.listen(port, err => {
+    console.log("port: " + port);
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);
   });
