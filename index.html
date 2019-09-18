@@ -22,14 +22,15 @@
           </h4>
           <aside id="json">
             SEIS is a <i>JSON object creator, viewer, updater and destroyer</i><br />
-            It includes an API powered by <a href="https://expressjs.com/">ExpessJS</a> that persists the data to a JSON file (via <a href="http://techfort.github.io/LokiJS/">LokiJS</a>) and a web UI which uses <a href="https://nextjs.org/">NextJS</a> for interacting with the API.
+            It includes an API powered by <a href="https://expressjs.com/">ExpressJS</a> that persists the data to a JSON file (via <a href="http://techfort.github.io/LokiJS/">LokiJS</a>) and a web UI which uses <a href="https://nextjs.org/">NextJS</a> for interacting with the API.
           </aside>
-          <br />
-          <span id="copright">copyright 2019</span>
+          <aside>
+            See the <a href="https://github.com/pacificpelican/seis/blob/master/README.md">readme</a> for how to start the app on your computer.
+          </aside>
           <br /><br />
           <li>
             You can view objects by entering them into the input at 
-            <a href="/Objectbrowser">Objectbrowser</a>
+            <a href="https://github.com/pacificpelican/seis/blob/master/pages/Objectbrowser.js">Objectbrowser</a>
           </li>
           <li>
             After visualizing the object with the <code>enter your JSON</code> button you
@@ -40,7 +41,7 @@
             <a href="#">/db/seisdb.json</a> file in the file system
           </li>
           <li>
-            These saved objects can be viewed at <a href="/Desk">Desk</a> 
+            These saved objects can be viewed at <a href="https://github.com/pacificpelican/seis/blob/master/pages/Desk.js">Desk</a> 
             (search for seis as the database object name) in chronological
             order
           </li>
@@ -60,13 +61,13 @@
           <h3>App Component Tree</h3>
           <ul>
             <li>
-              <a href="./Objectbrowser">Objectbrowser</a> → SpreadsheetObjectbrowser → SpreadsheetCoreRecursive
+              <a href="https://github.com/pacificpelican/seis/blob/master/pages/Objectbrowser.js">Objectbrowser</a> → <a href="https://github.com/pacificpelican/seis/blob/master/pages/SpreadsheetObjectbrowser.js">SpreadsheetObjectbrowser</a> → <a href="https://github.com/pacificpelican/seis/blob/master/pages/SpreadsheetCoreRecursive.js">SpreadsheetCoreRecursive</a>
             </li>
             <li>
-              <a href="./Desk">Desk</a> → Spreadsheet → SpreadsheetCoreRecursiveClick
+              <a href="https://github.com/pacificpelican/seis/blob/master/pages/Desk.js">Desk</a> → <a href="https://github.com/pacificpelican/seis/blob/master/pages/Spreadsheet.js">Spreadsheet</a> → <a href="https://github.com/pacificpelican/seis/blob/master/pages/SpreadsheetCoreRecursiveClick.js">SpreadsheetCoreRecursiveClick</a>
             </li>
             <li>
-              <a href="./View">View</a> → SpreadsheetCoreRecursive
+              <a href="https://github.com/pacificpelican/seis/blob/master/pages/View.js">View</a> → <a href="https://github.com/pacificpelican/seis/blob/master/pages/SpreadsheetCoreRecursive.js">SpreadsheetCoreRecursive</a>
             </li>
           </ul>
           <h3>API</h3>
@@ -75,14 +76,14 @@
               GET database object collection:{" "}
               <code>/api/1/getdbdata/db/seisdb/object/seis</code>
               <span className="info">
-                <a href="/Desk">Desk</a>, <a href="/Spiral">Spiralviewer</a>
+                <a href="https://github.com/pacificpelican/seis/blob/master/pages/Desk.js">Desk</a>, <a href="https://github.com/pacificpelican/seis/blob/master/pages/Spiralviewer.js">Spiralviewer</a>
               </span>
             </li>
             <li>
               GET one database object by locator:{" "}
               <code>/api/1/getdbdata/db/seisdb/object/seis/tuple/14206</code>
               <span className="info">
-                <a href="/View">View</a>
+                <a href="https://github.com/pacificpelican/seis/blob/master/pages/View.js">View</a>
               </span>
             </li>
             <li>
@@ -91,14 +92,14 @@
                 /api/1/saveobjectdata/db/seisdb/obj/seis/newdata/%22%20%7B%20%5C%22name%5C%22%3A%20%5C%22Bogey%5C%22%20%7D%22
               </code>
               <span className="info">
-                <a href="/Objectbrowser">Objectbrowser</a>
+                <a href="https://github.com/pacificpelican/seis/blob/master/pages/Objectbrowser.js">Objectbrowser</a>
               </span>
             </li>
             <li>
               POST (shallow) create new database object:{" "}
               <code>/api/1/saveobjectdatashallow/db/spiraldb/obj/notes/newdata/%7B%22note%22%3A%22I%20love%20the%20cat!%22%2C%22savedAt%22%3A1554680275455%7D</code>
               <span className="info">
-                <a href="/Spiral">Spiral</a>
+                <a href="https://github.com/pacificpelican/seis/blob/master/pages/Spiral.js">Spiral</a>
               </span>
             </li>
             <li>
@@ -107,14 +108,14 @@
                 /api/1/updatedata/db/seisdb/object/seis/objprop/Bogey/objkey/name/newval/Belle/tuple/99372
               </code>
               <span className="info">
-                <a href="/Edit">Edit</a>
+                <a href="https://github.com/pacificpelican/seis/blob/master/pages/Edit.js">Edit</a>
               </span>
             </li>
             <li>
               POST delete existing database object by locator property:{" "}
               <code>/api/1/deletedata/db/seisdb/object/seis/tuple/15540</code>
               <span className="info">
-                <a href="/Delete">Delete</a>
+                <a href="https://github.com/pacificpelican/seis/blob/master/pages/Delete.js">Delete</a>
               </span>
             </li>
           </ul>
