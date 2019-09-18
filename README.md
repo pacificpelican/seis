@@ -1,8 +1,5 @@
 **[seis](http://seis.pacificio.com)**
 
-*an object cycle manager by [Dan McKeown](http://danmckeown.info)*
-*copyright 2019*
-
 **[About](/About)**
 
 ---

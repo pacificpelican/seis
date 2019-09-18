@@ -71,7 +71,7 @@ class About extends Component {
             </li>
             <li>
               Database is saved by default to the{" "}
-              <a href="../db/seisdb.json">/db/seisdb.json</a> file
+              <a href="../db/seisdb.json">/db/seisdb.json</a> file (in the file system so it may not be reachable in the browser)
             </li>
             <li>
               These saved objects can be viewed at <a href="/Desk">Desk</a>{" "}
@@ -80,10 +80,10 @@ class About extends Component {
             </li>
             <li>
               Edit, View and Delete are given the URL parameters they require to
-              work via clicks on the links in Desk output
+              work via the links in Desk lookup output
             </li>
             <li>
-              Clicking on the red X will take you to the Delete page where you
+              Clicking on the red `X` will take you to the Delete page where you
               can confirm deletion (of that entire object)
             </li>
             <li>
