@@ -1,0 +1,15 @@
+{
+  "name": "seis-website",
+  "version": "0.2.0",
+  "description": "the web site for the seis object viewer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pacificpelican/seis/tree/gh-pages"
+  },
+  "author": "Dan McKeown",
+  "license": "ISC"
+}
