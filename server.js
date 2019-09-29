@@ -297,7 +297,7 @@ app.prepare().then(() => {
         AccountsDB.saveDatabase();
 
         let homeLink = "<a href='../../..'>Home</a>";
-        res.send(Object.assign({}, { result: "record created" }));
+        res.send(Object.assign({}, { result: "record created [POST]" }));
       });
     }
   );
@@ -323,7 +323,7 @@ app.prepare().then(() => {
           console.log("collection exists");
         }
 
-        console.log("about to add tuple");
+        console.log("about to add tuple (via GET)");
         console.log(newData);
         let serverObject = JSON.parse(newData);
         serverObject = JSON.parse(serverObject);
@@ -343,7 +343,7 @@ app.prepare().then(() => {
         AccountsDB.saveDatabase();
 
         let homeLink = "<a href='../../..'>Home</a>";
-        res.send(" record created    | " + req.params);
+        res.send(Object.assign({}, { result: "record created [GET]" }));
       });
     }
   );
@@ -389,7 +389,53 @@ app.prepare().then(() => {
         AccountsDB.saveDatabase();
 
         let homeLink = "<a href='../../..'>Home</a>";
-        res.send(Object.assign({}, { result: "record created" }));
+        res.send(Object.assign({}, { result: "record created (shallow) [POST]" }));
+      });
+    }
+  );
+
+  server.get(
+    "/api/1/saveobjectdatashallow/db/:db/obj/:obj/newdata/:newdata",
+    (req, res) => {
+      const AccountsDB = new loki(__dirname + "/db/" + req.params.db + ".json");
+      console.log(req.params);
+      const theParam = req.params.obj.toString();
+      let newData = req.params.newdata;
+
+      AccountsDB.loadDatabase({}, function() {
+        let _collection = AccountsDB.getCollection(theParam);
+
+        if (!_collection) {
+          console.log(
+            "Collection %s does not exist. Creating ... 🎮",
+            theParam
+          );
+          _collection = AccountsDB.addCollection(theParam);
+        } else {
+          console.log("collection exists");
+        }
+
+        console.log("about to add tuple");
+        console.log(newData);
+        let serverObject = JSON.parse(newData);
+        //  serverObject = JSON.parse(serverObject);
+        console.log(serverObject);
+
+        let dbObject = Object.assign(serverObject, {
+          locator: Math.floor(Math.random() * locatorScale + 1),
+          created_at_time: Date.now()
+        });
+
+        console.log("tuple to save");
+        console.log(dbObject);
+
+        _collection.insertOne(dbObject);
+
+        console.log("saving to database: " + newData);
+        AccountsDB.saveDatabase();
+
+        let homeLink = "<a href='../../..'>Home</a>";
+        res.send(Object.assign({}, { result: "record created (shallow) [GET]" }));
       });
     }
   );
@@ -448,6 +494,25 @@ app.prepare().then(() => {
       );  //  the last 3 parameters can be null
 
       res.send(Object.assign({}, { Response: "ok - POST update (remove)" }));
+    }
+  );
+
+  server.get(
+    "/api/1/deletedata/db/:db/object/:obj/tuple/:tuple",
+    (req, res) => {
+      console.log("running (simple) delete GET route");
+      console.log("obj: " + req.params.obj);
+
+      deleteDataWildcard(
+        req.params.db,
+        req.params.obj,
+        req.params.tuple,
+        null,
+        null,
+        null
+      );  //  the last 3 parameters can be null
+
+      res.send(Object.assign({}, { Response: "ok - GET update (remove)" }));
     }
   );
 
