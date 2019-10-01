@@ -1,4 +1,4 @@
-**[seis](http://seis.pacificio.com)**
+**[seis](https://seis.pacificio.com)**
 
 **About**
 
@@ -9,10 +9,11 @@
   <h3>seis</h3>
   <h6>
     an object cycle manager by 
-    <a href="http://danmckeown.info">Dan McKeown</a>
+    <a href="https://danmckeown.info">Dan McKeown</a>
   </h6>
+  <img src="./SeisLogoBanner.jpg" alt="logo-parrot" />
   <br />
-  <span id="copright">copyright 2019</span>
+  <span id="copright">copyright 2019</span><br /><span id="license">Licensed under the <a href="https://github.com/pacificpelican/seis/blob/master/LICENSE">ISC License</a>
   <br /><br />
   <li>
     You can view objects by entering them into the input at 
@@ -111,7 +112,7 @@
 
 ---
 
-Seis uses [NextJS](https://nextjs.org/) with [custom server and routing](https://github.com/zeit/next.js#custom-server-and-routing) and [ExpressJS](https://expressjs.com/) and was scaffolded using [create-next-app](https://open.segment.com/create-next-app/).  The UI is built with [ReactJS](https://reactjs.org/) components.  The app's JSON databases are powered by [LokiJS](http://lokijs.org/#/).
+Seis is from [Pacific IO](https://pacificio.com) and uses [NextJS](https://nextjs.org/) for front-end with [custom server and routing](https://github.com/zeit/next.js#custom-server-and-routing) and [ExpressJS](https://expressjs.com/) and was scaffolded using [create-next-app](https://open.segment.com/create-next-app/).  The UI is built with [ReactJS](https://reactjs.org/) components.  The app's JSON databases are powered by [LokiJS](http://techfort.github.io/LokiJS/).
 
 ---
 

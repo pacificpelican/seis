@@ -6,8 +6,8 @@ export default () => (
     powered by{" "}
     <b>
       {" "}
-      <a href="http://seis.pacificio.com">SEIS</a>{" via "}
-      <a href="http://mlBench.pacificio.com">mlBench</a>{" "}
+      <a href="https://seis.pacificio.com">SEIS</a>{" via "}
+      <a href="https://roost.pacificio.com/mlbench">mlBench</a>{" "}
       <a href="https://github.com/pacificpelican/mlBench">💻</a>{" "}/{" "}
       <a href="https://quarter.pacificio.com">Quarter</a>{" "}
       <a href="https://github.com/pacificpelican/quarter">

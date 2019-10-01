@@ -185,6 +185,8 @@ app.prepare().then(() => {
   const server = express();
   server.use(cors());
 
+  console.log("SEIS API Server now running at port " + port);
+
   server.get("/a", (req, res) => {
     return app.render(req, res, "/a", req.query);
   });
