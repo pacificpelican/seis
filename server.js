@@ -78,7 +78,9 @@ function postDataWildcard(
       record[`${objkeyString}`] !== null
     ) {
       console.log("0 levels deep in object; key: " + objkeyString);
+      console.log(record[`${objkeyString}`]);
       record[`${objkeyString}`] = newVal;
+      console.log("set new value");
     } else {
       console.log("going 1 level deep in object");
       console.log(record);
@@ -139,8 +141,11 @@ function postDataWildcard(
         }
       });
     }
+    console.log("about to update collection")
+    console.log(record);
     _collection.update(record);
 
+    console.log("about to save database");
     db2.saveDatabase();
   });
 }
@@ -371,7 +376,7 @@ app.prepare().then(() => {
           console.log("collection exists");
         }
 
-        console.log("about to add tuple");
+        console.log("about to add tuple [shallow] - " + req.params.db + " | " + req.params.obj);
         console.log(newData);
         let serverObject = JSON.parse(newData);
         //  serverObject = JSON.parse(serverObject);
