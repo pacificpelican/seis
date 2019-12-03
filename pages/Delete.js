@@ -1,5 +1,5 @@
 //  seis copyright 2017-2019
-//  Edit.js
+//  Delete.js
 //  via mlBench & danmckeown.info
 import React, { Component } from "react";
 import { withRouter } from 'next/router';
