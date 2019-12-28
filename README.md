@@ -1,51 +1,25 @@
-**[seis](https://seis.pacificio.com)**
+# **[seis](https://seis.pacificio.com)**
 
-**About**
+**Creator, Reader, Updater and Destroyer of JavaScript objects**
 
----
+Licensed under [ISC License](LICENSE) copyright (c) 2018-2019 [Dan McKeown](https://danmckeown.info).
 
-<section id="propsInfo">
-  <h3>6️⃣</h3>
-  <h3>seis</h3>
-  <h6>
-    an object cycle manager by 
-    <a href="https://danmckeown.info">Dan McKeown</a>
-  </h6>
-  <img src="./SeisLogoBanner.jpg" alt="logo-parrot" />
-  <br />
-  <span id="copright">copyright 2019</span><br /><span id="license">Licensed under the <a href="https://github.com/pacificpelican/seis/blob/master/LICENSE">ISC License</a>
-  <br /><br />
-  <li>
-    You can view objects by entering them into the input at 
-    <a href="/pages/Objectbrowser.js">Objectbrowser</a>
-  </li>
-  <li>
-    After visualizing the object with the `enter your JSON` button you
-    can persist the data by pressing the `save to DB` button
-  </li>
-  <li>
-    Database is saved by default to the 
-    <a href="/db/seisdb.json">/db/seisdb.json</a> file
-  </li>
-  <li>
-    These saved objects can be viewed at <a href="/pages/Desk.js">Desk</a> 
-    (search for seis as the database object name) in chronological
-    order
-  </li>
-  <li>
-    Edit, View and Delete are given the URL parameters they require to work via
-    clicks on the links in Desk output
-  </li>
-  <li>Clicking on the red X will take you to the Delete page where you can confirm deletion (of that entire object)</li>
-  <li>
-    When an object is created, along with the normal metadata, a
-    special locator property is added. This is used as a kind of ID
-    for editing and deleting
-  </li>
-</section>
+<h3>6️⃣</h3>
+<img src="./SeisLogoBanner.jpg" alt="logo-parrot" />
+<h6>
+  an object cycle manager by 
+  <a href="https://danmckeown.info">Dan McKeown</a>
+</h6>
 
----
+## Table Of Contents
+- [Features](#features)
+- [QuickStart](#quickstart)
+- [Requirements](#requirements)
+- [Usage](#usage)
+- [Installation](#installation)
+- [About](#about)
 
+## features
 <article id="appTree">
   <h3>App Component Tree</h3>
   <ul>
@@ -110,20 +84,57 @@
   </ul>
 </article>
 
----
-
-Seis is from [Pacific IO](https://pacificio.com) and uses [NextJS](https://nextjs.org/) for front-end with [custom server and routing](https://github.com/zeit/next.js#custom-server-and-routing) and [ExpressJS](https://expressjs.com/) and was scaffolded using [create-next-app](https://open.segment.com/create-next-app/).  The UI is built with [ReactJS](https://reactjs.org/) components.  The app's JSON databases are powered by [LokiJS](http://techfort.github.io/LokiJS/).
-
----
-
-Install it and run:
-
+## quickstart
 ```bash
 npm install
 npm run dev
-# or
-yarn
-yarn dev
+open http://localhost:3010
 ```
 
-`open http://localhost:3010`
+## requirements
+- NodeJS
+- NPM
+
+## installation
+- Check [NodeJS](https://nodejs.org/en/) version: `node --version`
+- Check [NPM](https://www.npmjs.com/) version: `npm --version`
+- Clone the Git repo: `git clone <repo-url>`
+
+## usage
+<section id="propsInfo">
+  <li>
+    You can view objects by entering them into the input at 
+    <a href="/pages/Objectbrowser.js">Objectbrowser</a>
+  </li>
+  <li>
+    After visualizing the object with the `enter your JSON` button you
+    can persist the data by pressing the `save to DB` button
+  </li>
+  <li>
+    Database is saved by default to the 
+    <a href="/db/seisdb.json">/db/seisdb.json</a> file
+  </li>
+  <li>
+    These saved objects can be viewed at <a href="/pages/Desk.js">Desk</a> 
+    (search for seis as the database object name) in chronological
+    order
+  </li>
+  <li>
+    Edit, View and Delete are given the URL parameters they require to work via
+    clicks on the links in Desk output
+  </li>
+  <li>Clicking on the red X will take you to the Delete page where you can confirm deletion (of that entire object)</li>
+  <li>
+    When an object is created, along with the normal metadata, a
+    special locator property is added. This is used as a kind of ID
+    for editing and deleting
+  </li>
+</section>
+
+...
+For a simlar project (all v1 data APIs should be compatible) but for MongoDB, see [OkConcept0](https://okconcept0.pacifico.com).
+...
+
+## about
+
+Seis is from [Pacific IO](https://pacificio.com) and uses [NextJS](https://nextjs.org/) for front-end with [custom server and routing](https://github.com/zeit/next.js#custom-server-and-routing) and [ExpressJS](https://expressjs.com/) and was scaffolded using [create-next-app](https://open.segment.com/create-next-app/).  The UI is built with [ReactJS](https://reactjs.org/) components.  The app's JSON databases are powered by [LokiJS](http://techfort.github.io/LokiJS/).
