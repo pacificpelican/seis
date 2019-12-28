@@ -1,6 +1,6 @@
 {
   "name": "seis-website",
-  "version": "0.3.1",
+  "version": "1.5.0",
   "description": "the web site for the seis object viewer",
   "main": "index.html",
   "scripts": {
