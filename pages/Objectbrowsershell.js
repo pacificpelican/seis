@@ -1,4 +1,4 @@
-import Objectbrowser from "./Objectbrowser";
+import Objectbrowser from "okconceptbrowser";
 
 let dataChunk = `{ 
   "src": "Images/Sun.png",
