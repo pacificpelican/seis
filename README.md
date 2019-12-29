@@ -131,9 +131,9 @@ open http://localhost:3010
   </li>
 </section>
 
-...
-For a simlar project (all v1 data APIs should be compatible) but for MongoDB, see [OkConcept0](https://okconcept0.pacifico.com).
-...
+---
+For a similar project (all v1 data APIs should be compatible) but for MongoDB, see [OkConcept0](https://okconcept0.pacifico.com).
+---
 
 ## about
 
