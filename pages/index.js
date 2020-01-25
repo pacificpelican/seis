@@ -32,8 +32,8 @@ export default () => (
         </Link>
       </li>
       <li>
-        <Link href="/Edit">
-          <a>Edit (Update)</a>
+        <Link href="/Edit2">
+          <a>Edit2 (Update)</a>
         </Link>
       </li>
       <li>

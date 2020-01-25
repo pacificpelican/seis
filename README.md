@@ -66,12 +66,12 @@ Licensed under [ISC License](LICENSE) copyright (c) 2018-2019 [Dan McKeown](http
       </span>
     </li>
     <li>
-      POST update existing database object by locator property: 
+      <span>POST update existing database object by locator property:</span>
       <code>
-        /api/1/updatedata/db/seisdb/object/seis/objprop/Bogey/objkey/name/newval/Belle/tuple/99372
+        /api/1.6/updatedata/db/seisdb/object/seis/objprop/%2522birds%2522/objkey/wha/newval/birbs/tuple/11749
       </code>
       <span className="info">
-        <a href="/pages/Edit.js">Edit</a>
+        <a href="/pages/Edit2.js">Edit2</a>
       </span>
     </li>
     <li>
@@ -120,7 +120,7 @@ open http://localhost:3010
     order
   </li>
   <li>
-    Edit, View and Delete are given the URL parameters they require to work via
+    `Edit2`, `View` and `Delete` are given the URL parameters they require to work via
     clicks on the links in Desk output
   </li>
   <li>Clicking on the red X will take you to the Delete page where you can confirm deletion (of that entire object)</li>
